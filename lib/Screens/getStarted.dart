@@ -22,8 +22,9 @@ class _GetStartedState extends State<GetStarted> {
           height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('Images/Pollutionlogin3.png'),
-                fit: BoxFit.cover),
+              image: AssetImage('Images/Pollutionlogin3.png'),
+              fit: BoxFit.cover,
+            ),
           ),
           child: Flexible(
             flex: 1,
