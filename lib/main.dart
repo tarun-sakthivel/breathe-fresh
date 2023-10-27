@@ -8,6 +8,7 @@ import 'Screens/OutdoorScreen.dart';
 import 'Screens/Moderate.dart';
 import 'Screens/Unhealthy.dart';
 import 'Screens/Hazardous.dart';
+import 'Screens/registrationsc.dart';
 
 void main() {
   runApp(const breathe_fresh());
@@ -28,7 +29,8 @@ class breathe_fresh extends StatelessWidget {
         OutdoorScreen.id: (context) => const OutdoorScreen(),
         Moderate.id: (context) => const Moderate(),
         Unhealthy.id: (context) => const Unhealthy(),
-        Hazrdous.id: (context) => const Hazrdous()
+        Hazrdous.id: (context) => const Hazrdous(),
+        Registrationsc.id: (context) => const Registrationsc()
       },
     );
   }

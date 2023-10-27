@@ -1,20 +1,18 @@
-import 'package:breathe_fresh/Components/RoundedButton.dart';
+import 'package:breathe_fresh/Screens/getStarted.dart';
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
-import 'IndoorScreen.dart';
-import 'OutdoorScreen.dart';
 import 'package:breathe_fresh/Components/Constants.dart';
-import 'registrationsc.dart';
+import 'package:breathe_fresh/Components/RoundedButton.dart';
 
-class GetStarted extends StatefulWidget {
-  static String id = 'getStarted';
-  const GetStarted({super.key});
+class Registrationsc extends StatefulWidget {
+  static String id = 'registrationsc';
+  const Registrationsc({super.key});
 
   @override
-  State<GetStarted> createState() => _GetStartedState();
+  State<Registrationsc> createState() => _RegistrationscState();
 }
 
-class _GetStartedState extends State<GetStarted> {
+class _RegistrationscState extends State<Registrationsc> {
   late String email;
   late String password;
   late String Username;
@@ -40,7 +38,7 @@ class _GetStartedState extends State<GetStarted> {
                   height: 150.0,
                 ),
                 Text(
-                  'Create Your \nAccount',
+                  'Login To Your \nAccount',
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 42,
@@ -48,7 +46,7 @@ class _GetStartedState extends State<GetStarted> {
                   textAlign: TextAlign.center,
                 ),
                 Text(
-                  '____________\nJoin the community to \nBreathe Fresh!!',
+                  '____________\n Welcome Back Peep!!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 14,
@@ -84,32 +82,6 @@ class _GetStartedState extends State<GetStarted> {
                         ),
                         SizedBox(
                           height: 15.0,
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(35),
-                            color: Color.fromARGB(255, 238, 184, 249),
-                          ),
-                          margin: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 16.0),
-                          child: TextField(
-                            keyboardType: TextInputType.emailAddress,
-                            obscureText: true,
-                            onChanged: (value) {
-                              password = value;
-                            },
-                            decoration: ktextFieldDecoration.copyWith(
-                                contentPadding: EdgeInsets.fromLTRB(1, 0, 0, 0),
-                                icon: Icon(
-                                  Icons.email,
-                                  color: Colors.purple,
-                                  size: 32,
-                                ),
-                                border: InputBorder.none,
-                                hintStyle: TextStyle(fontSize: 23),
-                                hintText: 'Email'),
-                          ),
                         ),
                         Container(
                             padding: EdgeInsets.all(5),
@@ -159,26 +131,22 @@ class _GetStartedState extends State<GetStarted> {
                                     size: 29,
                                   )),
                             )),
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: RoundedButton(
-                              title: 'Register',
-                              color: Colors.purple,
-                              onPessed: () {
-                                Navigator.pushNamed(
-                                    context,
-                                    HomeScreen
-                                        .id); //For now for the running of the app we are routing it to the indoor screen later we will connect it to the homescreen
-                              }),
-                        ),
+                        RoundedButton(
+                            title: 'Register',
+                            color: Colors.purple,
+                            onPessed: () {
+                              Navigator.pushNamed(
+                                  context,
+                                  HomeScreen
+                                      .id); //For now for the running of the app we are routing it to the indoor screen later we will connect it to the homescreen
+                            }),
                         Row(
                           children: <Widget>[
                             SizedBox(
                               width: 66.0,
                             ),
                             Text(
-                              'Already have an account?',
+                              'forgot your password?',
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -186,7 +154,7 @@ class _GetStartedState extends State<GetStarted> {
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, Registrationsc.id);
+                                Navigator.pushNamed(context, GetStarted.id);
                               },
                               child: Text(
                                 'click here',
