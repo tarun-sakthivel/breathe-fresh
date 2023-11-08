@@ -22,57 +22,57 @@ class _HazrdousState extends State<Hazrdous> {
               height: 431,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: Color(0xff1c1c1c),
+                color: const Color(0xff1c1c1c),
               ),
               child: Column(
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 22,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       IconButton(
                           onPressed: () {
                             Navigator.pushNamed(context, HomeScreen.id);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_back_ios_new_rounded,
                             color: Colors.white,
                             size: 45,
                           )),
-                      Image(image: AssetImage('Images/Ellipse 14.png')),
-                      SizedBox(
+                      const Image(image: AssetImage('Images/Ellipse 14.png')),
+                      const SizedBox(
                         width: 82,
                       ),
-                      Text(
+                      const Text(
                         'Air Quality',
                         style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w400,
                             color: Colors.white),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 72,
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           PopupMenuButton(
                             itemBuilder: (context) => [
-                              PopupMenuItem(
+                              const PopupMenuItem(
                                 child: Row(
                                   children: <Widget>[Icon(Icons.home)],
                                 ),
                               ),
                             ],
-                            child: Icon(
+                            child: const Icon(
                               Icons.more_vert,
                               color: Colors.white,
                               size: 50,
@@ -82,8 +82,8 @@ class _HazrdousState extends State<Hazrdous> {
                       )
                     ],
                   ),
-                  SizedBox(height: 15),
-                  Row(
+                  const SizedBox(height: 15),
+                  const Row(
                     children: [
                       SizedBox(
                         width: 356,
@@ -91,20 +91,20 @@ class _HazrdousState extends State<Hazrdous> {
                       Image(image: AssetImage('Images/Ellipse 14.png')),
                     ],
                   ), //have to change what to change and list in that
-                  SizedBox(
+                  const SizedBox(
                     height: 38,
                   ),
-                  Text("Hazardous",
+                  const Text("Hazardous",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 60,
                         fontWeight: FontWeight.w400,
                       )),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       SizedBox(
                         width: 151,
@@ -120,7 +120,7 @@ class _HazrdousState extends State<Hazrdous> {
                       color: Colors.white,
                       width: 2.7,
                     )),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
@@ -143,16 +143,16 @@ class _HazrdousState extends State<Hazrdous> {
                       ],
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       Image(image: AssetImage('Images/Ellipse 14.png')),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 44,
                   ),
-                  Image(image: AssetImage('Images/Ellipse 14.png')),
-                  Row(
+                  const Image(image: AssetImage('Images/Ellipse 14.png')),
+                  const Row(
                     children: [
                       SizedBox(
                         width: 356,
@@ -160,7 +160,7 @@ class _HazrdousState extends State<Hazrdous> {
                       Image(image: AssetImage('Images/Ellipse 14.png')),
                     ],
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text("Hazardous",
@@ -205,10 +205,10 @@ class _HazrdousState extends State<Hazrdous> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 58,
             ),
-            Row(children: <Widget>[
+            const Row(children: <Widget>[
               SizedBox(
                 width: 50,
               ),
@@ -221,7 +221,7 @@ class _HazrdousState extends State<Hazrdous> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("Deadly \nthreat",
+                const Text("Deadly \nthreat",
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.w600,
@@ -229,44 +229,44 @@ class _HazrdousState extends State<Hazrdous> {
                 Image.asset('Images/heart1.png')
               ],
             ),
-            SizedBox(
-              height: 123,
+            const SizedBox(
+              height: 143,
             ),
             Container(
               height: 55,
               width: 330,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: Color(0xff49da58),
+                color: const Color(0xff49da58),
               ),
               child: Row(
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     width: 30,
                   ),
                   IconButton(
                     onPressed: () {
                       Navigator.pushNamed(context, HomeScreen.id);
                     },
-                    icon: Icon(Icons.home),
+                    icon: const Icon(Icons.home),
                     iconSize: 40,
                     color: Colors.black,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 60,
                   ),
                   IconButton(
                     onPressed: () {
                       Navigator.pushNamed(context, OutdoorScreen.id);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.refresh,
                       color: Colors.black,
                       size: 40,
                     ),
                   ),
-                  SizedBox(width: 80),
-                  Icon(
+                  const SizedBox(width: 80),
+                  const Icon(
                     Icons.send,
                     color: Colors.black,
                     size: 40,

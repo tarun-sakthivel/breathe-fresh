@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676761857122",
+    "project_id": "breathe-fresh-4bf5b",
+    "storage_bucket": "breathe-fresh-4bf5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676761857122:android:307e6e40e5b43cdc9cb53b",
+        "android_client_info": {
+          "package_name": "com.example.breathe_fresh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCewlLldHanDB-CemWv9nmy0rl4lpCp_Rc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

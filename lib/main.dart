@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'Screens/welcome_screen.dart';
 import 'Screens/homeScreen.dart';
 import 'Screens/IndoorScreen.dart';
-import 'Screens/OutdoorScreen.dart';
 import 'Screens/Moderate.dart';
 import 'Screens/Unhealthy.dart';
 import 'Screens/Hazardous.dart';
 import 'Screens/registrationsc.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const breathe_fresh());
 }
 

@@ -1,4 +1,3 @@
-import 'package:breathe_fresh/Screens/getStarted.dart';
 import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
@@ -15,7 +14,7 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(15.0),
       child: Material(
         elevation: 5.0,
         color: color,
@@ -23,8 +22,9 @@ class RoundedButton extends StatelessWidget {
         child: MaterialButton(
           //to make this as the froster glass design then you have to add the function of material button inside the froster class !
           onPressed: onPessed,
-          minWidth: 600.0,
-          height: 61.0,
+          minWidth: 300,
+          height: 30,
+
           child: Text(
             title,
             style: const TextStyle(

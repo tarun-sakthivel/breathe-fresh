@@ -1,13 +1,6 @@
-import 'dart:ffi';
-
 import 'package:breathe_fresh/Screens/IndoorScreen.dart';
 import 'package:breathe_fresh/Screens/OutdoorScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'Hazardous.dart';
-import 'Moderate.dart';
-import 'Unhealthy.dart';
-import 'OutdoorScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = 'homeScreen';
@@ -27,12 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
           alignment: Alignment.topCenter,
           children: <Widget>[
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('Images/Homescreenbg.png'),
                       fit: BoxFit.cover)),
             ),
-            Text(
+            const Text(
               '\n\nBREATHE \n FRESH!!',
               style: TextStyle(color: Colors.black54, fontSize: 55),
             ),
@@ -40,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 350,
                   ),
                   Center(
@@ -60,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 onPressed: () {
                                   Navigator.pushNamed(context, IndoorScreen.id);
                                 },
-                                child: Column(children: <Widget>[
+                                child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[
                                     Center(
                                       child: Image(
@@ -102,10 +95,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Navigator.pushNamed(
                                       context, OutdoorScreen.id);
                                 },
-                                child: Column(children: <Widget>[
+                                child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[
                                     Image(
-                                      image: AssetImage('Images/outdoor.png'),
+                                      image: AssetImage('Images/outdoor1.png'),
                                       color: Color.fromARGB(125, 218, 204, 204),
                                       colorBlendMode: BlendMode.lighten,
                                       height: 204,

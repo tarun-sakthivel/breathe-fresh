@@ -26,10 +26,10 @@ class _IndoorScreenState extends State<IndoorScreen> {
               ),
               child: Column(
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(
@@ -42,26 +42,26 @@ class _IndoorScreenState extends State<IndoorScreen> {
                       ),
                     ],
                   ), //have to change what to change and list in that
-                  SizedBox(
+                  const SizedBox(
                     height: 88,
                   ),
-                  Text("379",
+                  const Text("379",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 60,
                         fontWeight: FontWeight.w400,
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
-                  Text(
+                  const Text(
                     "HARAZDOUS",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 32,
                         fontWeight: FontWeight.w400),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   SizedBox(
@@ -69,14 +69,14 @@ class _IndoorScreenState extends State<IndoorScreen> {
                     width: 162,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Color(
+                            backgroundColor: const Color(
                                 0xffd9d9d9), //this primary function is used to add/change the color of the following elevated button
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50))),
                         onPressed: () {
                           Navigator.pushNamed(context, HomeScreen.id);
                         },
-                        child: Text(
+                        child: const Text(
                           'Get Tips',
                           style: TextStyle(
                             color: Colors.black,
@@ -91,22 +91,22 @@ class _IndoorScreenState extends State<IndoorScreen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(
+                const Text(
                   'AQI Forecast',
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                       color: Colors.black54),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Row(
                   children: <Widget>[
-                    SizedBox(
+                    const SizedBox(
                       width: 42,
                     ),
                     Container(
@@ -114,8 +114,8 @@ class _IndoorScreenState extends State<IndoorScreen> {
                       width: 141,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(45),
-                          color: Color(0xe262e257)),
-                      child: Column(
+                          color: const Color(0xe262e257)),
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
@@ -135,38 +135,43 @@ class _IndoorScreenState extends State<IndoorScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: 35,
+                    const SizedBox(
+                      width: 25,
                     ),
-                    Container(
-                      height: 143,
-                      width: 141,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(45),
-                          color: Color(0xc9ff7a00)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            '150',
-                            style: TextStyle(
-                                fontSize: 40,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black),
-                          ),
-                          Text(
-                            'Wednesday',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black),
-                          ),
-                        ],
+                    Expanded(
+                      child: Container(
+                        height: 143,
+                        width: 111,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(45),
+                            color: const Color(0xc9ff7a00)),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '150',
+                              style: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            ),
+                            Text(
+                              'Wednesday',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
+                    const SizedBox(
+                      width: 20,
+                    )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Container(
@@ -178,27 +183,27 @@ class _IndoorScreenState extends State<IndoorScreen> {
                   ),
                   child: Row(
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         width: 30,
                       ),
                       IconButton(
                         onPressed: () {
                           Navigator.pushNamed(context, HomeScreen.id);
                         },
-                        icon: Icon(Icons.home),
+                        icon: const Icon(Icons.home),
                         iconSize: 40,
                         color: Colors.black,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 60,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.refresh,
                         color: Colors.black,
                         size: 40,
                       ),
-                      SizedBox(width: 80),
-                      Icon(
+                      const SizedBox(width: 80),
+                      const Icon(
                         Icons.send,
                         color: Colors.black,
                         size: 40,
