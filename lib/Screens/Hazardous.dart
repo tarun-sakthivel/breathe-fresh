@@ -18,7 +18,7 @@ class _HazrdousState extends State<Hazrdous> {
         body: Column(
           children: <Widget>[
             Container(
-              width: 435,
+              width: 425,
               height: 431,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
@@ -193,13 +193,8 @@ class _HazrdousState extends State<Hazrdous> {
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
                       SizedBox(
-                        width: 16,
+                        width: 10,
                       ),
-                      Text("Hazardous",
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
                     ],
                   ),
                 ],
@@ -230,7 +225,7 @@ class _HazrdousState extends State<Hazrdous> {
               ],
             ),
             const SizedBox(
-              height: 143,
+              height: 123,
             ),
             Container(
               height: 55,

@@ -71,7 +71,7 @@ flutter:
     - Images/heart3.png
     - Images/heart2.png
     - Images/heart1.png
-    - Images/indoor.png
+    - Images/indoor1.png
     - Images/outdoor1.png
     - Images/outdoor.png
 
@@ -86,17 +86,26 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: Righteous
+      fonts:
+        - asset: fonts/Righteous-Regular.ttf
+         
+    - family: PassionOne
+      fonts:
+        - asset: fonts/PassionOne-Black.ttf
+        - asset: fonts/PassionOne-Bold.ttf
+        - asset: fonts/PassionOne-Regular.ttf
+    
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Black.ttf
+        - asset: fonts/Roboto-Bold.ttf
+        - asset: fonts/Roboto-Medium.ttf
+          weight: 700
+
+
+           
+  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

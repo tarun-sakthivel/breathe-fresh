@@ -48,15 +48,17 @@ class _GetStartedState extends State<GetStarted> {
                   const Text(
                     'Login To Your\nAccount',
                     style: TextStyle(
+                        fontFamily: 'Roboto',
                         fontWeight: FontWeight.w700,
                         fontSize: 42,
                         color: Colors.white70),
                     textAlign: TextAlign.center,
                   ),
                   const Text(
-                    '____________\n Welcome Back Peep!!',
+                    '____________________________\n \n Welcome Back Peep!!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                        fontFamily: 'Roboto',
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
                         color: Colors.white,
@@ -93,6 +95,7 @@ class _GetStartedState extends State<GetStarted> {
                           ),
                           Flexible(
                             flex: 0,
+                            fit: FlexFit.loose,
                             child: Container(
                               padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
@@ -115,7 +118,10 @@ class _GetStartedState extends State<GetStarted> {
                                       size: 32,
                                     ),
                                     border: InputBorder.none,
-                                    hintStyle: const TextStyle(fontSize: 23),
+                                    hintStyle: const TextStyle(
+                                      fontSize: 23,
+                                      fontFamily: 'Roboto',
+                                    ),
                                     hintText: 'Email'),
                               ),
                             ),
@@ -137,7 +143,10 @@ class _GetStartedState extends State<GetStarted> {
                                     password = value;
                                   },
                                   decoration: ktextFieldDecoration.copyWith(
-                                      hintStyle: const TextStyle(fontSize: 23),
+                                      hintStyle: const TextStyle(
+                                        fontSize: 23,
+                                        fontFamily: 'Roboto',
+                                      ),
                                       hintText: 'Password',
                                       contentPadding:
                                           const EdgeInsets.fromLTRB(1, 0, 0, 0),
@@ -175,11 +184,12 @@ class _GetStartedState extends State<GetStarted> {
                           Row(
                             children: <Widget>[
                               const SizedBox(
-                                width: 66.0,
+                                width: 90,
                               ),
                               const Text(
                                 'Dont have an account?',
                                 style: TextStyle(
+                                    fontFamily: 'Roboto',
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.black45),
@@ -192,6 +202,7 @@ class _GetStartedState extends State<GetStarted> {
                                 child: const Text(
                                   'click here',
                                   style: TextStyle(
+                                      fontFamily: 'Roboto',
                                       decoration: TextDecoration.underline,
                                       fontSize: 14),
                                 ),

@@ -1,5 +1,8 @@
+import 'package:breathe_fresh/Screens/Hazardous.dart';
 import 'package:breathe_fresh/Screens/IndoorScreen.dart';
 import 'package:breathe_fresh/Screens/OutdoorScreen.dart';
+import 'package:breathe_fresh/Screens/getStarted.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,24 +20,48 @@ class _HomeScreenState extends State<HomeScreen> {
     return MaterialApp(
       home: Scaffold(
         body: Stack(
-          alignment: Alignment.topCenter,
           children: <Widget>[
-            Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('Images/Homescreenbg.png'),
-                      fit: BoxFit.cover)),
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('Images/Homescreenbg.png'),
+                        fit: BoxFit.fill)),
+              ),
             ),
-            const Text(
-              '\n\nBREATHE \n FRESH!!',
-              style: TextStyle(color: Colors.black54, fontSize: 55),
+            Container(
+              padding: EdgeInsets.fromLTRB(350, 40, 10, 10),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, GetStarted.id);
+                },
+                icon: Icon(Icons.logout_outlined),
+                iconSize: 45,
+                color: Colors.black,
+                hoverColor: Colors.black26,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(88, 20, 20, 10),
+              child: const Text(
+                '\n\nBREATHE \n FRESH!!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 60,
+                  fontFamily: 'PassionOne',
+                  letterSpacing: 5,
+                ),
+              ),
             ),
             Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const SizedBox(
-                    height: 350,
+                  Expanded(
+                    child: const SizedBox(
+                      height: 330,
+                    ),
                   ),
                   Center(
                     child: Container(
@@ -56,19 +83,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[
                                     Center(
-                                      child: Image(
-                                        image: AssetImage('Images/indoor.png'),
-                                        color:
-                                            Color.fromARGB(125, 218, 204, 204),
-                                        colorBlendMode: BlendMode.lighten,
-                                        height: 234,
-                                        width: 340,
+                                      child: Opacity(
+                                        opacity: 0.65,
+                                        child: Image(
+                                          image:
+                                              AssetImage('Images/indoor1.png'),
+                                          height: 224,
+                                          width: 360,
+                                        ),
                                       ),
                                     ),
                                     Center(
                                       child: Row(children: <Widget>[
                                         SizedBox(
-                                          height: 200,
+                                          height: 210,
                                           width: 80,
                                         ),
                                         Icon(
@@ -79,6 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           ' INDOOR',
                                           style: TextStyle(
+                                              fontFamily: 'Righteous',
                                               fontSize: 45,
                                               color: Colors.black),
                                         ),
@@ -97,18 +126,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                                 child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[
-                                    Image(
-                                      image: AssetImage('Images/outdoor1.png'),
-                                      color: Color.fromARGB(125, 218, 204, 204),
-                                      colorBlendMode: BlendMode.lighten,
-                                      height: 204,
-                                      width: 560,
+                                    Opacity(
+                                      opacity: 0.7,
+                                      child: Image(
+                                        image:
+                                            AssetImage('Images/outdoor1.png'),
+                                        height: 204,
+                                        width: 560,
+                                      ),
                                     ),
                                     Center(
                                       child: Row(children: <Widget>[
                                         SizedBox(
-                                          height: 200,
-                                          width: 85,
+                                          height: 210,
+                                          width: 50,
                                         ),
                                         Icon(
                                           Icons.air_outlined,
@@ -118,6 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Text(
                                           ' OUTDOOR',
                                           style: TextStyle(
+                                              fontFamily: 'Righteous',
                                               fontSize: 45,
                                               color: Colors.black),
                                         ),

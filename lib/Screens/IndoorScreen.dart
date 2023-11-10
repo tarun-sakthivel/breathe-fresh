@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'Hazardous.dart';
+import 'getStarted.dart';
 
 class IndoorScreen extends StatefulWidget {
   static String id = 'IndoorScreen';
