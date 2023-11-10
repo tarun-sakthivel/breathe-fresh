@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
           children: <Widget>[
@@ -29,16 +30,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         fit: BoxFit.fill)),
               ),
             ),
-            Container(
-              padding: EdgeInsets.fromLTRB(350, 40, 10, 10),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, GetStarted.id);
-                },
-                icon: Icon(Icons.logout_outlined),
-                iconSize: 45,
-                color: Colors.black,
-                hoverColor: Colors.black26,
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.fromLTRB(340, 40, 20, 10),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, GetStarted.id);
+                  },
+                  icon: Icon(Icons.logout_outlined),
+                  iconSize: 45,
+                  color: Colors.black,
+                  hoverColor: Colors.black26,
+                ),
               ),
             ),
             Padding(

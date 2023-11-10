@@ -25,6 +25,7 @@ class _GetStartedState extends State<GetStarted> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: ModalProgressHUD(
           inAsyncCall: showSpinner,
@@ -94,7 +95,7 @@ class _GetStartedState extends State<GetStarted> {
                             height: 15.0,
                           ),
                           Flexible(
-                            flex: 0,
+                            flex: 1,
                             fit: FlexFit.loose,
                             child: Container(
                               padding: const EdgeInsets.all(5),
@@ -127,6 +128,8 @@ class _GetStartedState extends State<GetStarted> {
                             ),
                           ),
                           Flexible(
+                            flex: 1,
+                            fit: FlexFit.loose,
                             child: Container(
                                 height: 60,
                                 width: 400,

@@ -16,6 +16,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
         body: Column(

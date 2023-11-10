@@ -9,10 +9,13 @@ import 'Screens/Unhealthy.dart';
 import 'Screens/Hazardous.dart';
 import 'Screens/registrationsc.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart'; //this package is used to keep the app in potrait mode
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const breathe_fresh());
 }
 

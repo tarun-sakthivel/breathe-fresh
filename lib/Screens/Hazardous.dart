@@ -14,6 +14,7 @@ class _HazrdousState extends State<Hazrdous> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
           children: <Widget>[

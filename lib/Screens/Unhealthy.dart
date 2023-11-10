@@ -14,6 +14,7 @@ class _UnhealthyState extends State<Unhealthy> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
           children: <Widget>[

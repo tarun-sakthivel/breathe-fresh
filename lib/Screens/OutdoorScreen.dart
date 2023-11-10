@@ -15,6 +15,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
           children: <Widget>[

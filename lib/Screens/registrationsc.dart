@@ -24,6 +24,7 @@ class _RegistrationscState extends State<Registrationsc> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: ModalProgressHUD(
           inAsyncCall: showSpinner,
@@ -36,61 +37,60 @@ class _RegistrationscState extends State<Registrationsc> {
                 fit: BoxFit.cover,
               ),
             ),
-            child: Flexible(
-              flex: 1,
-              fit: FlexFit.tight,
-              child: Column(
-                children: <Widget>[
-                  const SizedBox(
-                    height: 150.0,
-                  ),
-                  const Text(
-                    'Create Your \nAccount',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 42,
-                        color: Colors.white70),
-                    textAlign: TextAlign.center,
-                  ),
-                  const Text(
-                    '____________\n Join the community to \nBreathe Fresh!!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                        wordSpacing: 1.0),
-                  ),
-                  const SizedBox(
-                    height: 130.0,
-                  ),
-                  Flexible(
-                    flex: 1,
-                    fit: FlexFit.tight,
-                    child: Container(
-                      width: 400,
-                      height: 390,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(36),
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          const SizedBox(
-                            height: 5,
+            child: Column(
+              children: <Widget>[
+                const SizedBox(
+                  height: 150.0,
+                ),
+                const Text(
+                  'Create Your \nAccount',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 42,
+                      color: Colors.white70),
+                  textAlign: TextAlign.center,
+                ),
+                const Text(
+                  '____________\n Join the community to \nBreathe Fresh!!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                      wordSpacing: 1.0),
+                ),
+                const SizedBox(
+                  height: 130.0,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: 400,
+                    height: 390,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(36),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          height: 6,
+                          width: 175,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(27),
+                            color: const Color(0xffd9d9d9),
                           ),
-                          Container(
-                            height: 6,
-                            width: 175,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(27),
-                              color: const Color(0xffd9d9d9),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15.0,
-                          ),
-                          Container(
+                        ),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Container(
                               padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
@@ -113,7 +113,11 @@ class _RegistrationscState extends State<Registrationsc> {
                                       size: 32,
                                     )),
                               )),
-                          Container(
+                        ),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Container(
                               padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
@@ -136,7 +140,11 @@ class _RegistrationscState extends State<Registrationsc> {
                                       size: 32,
                                     )),
                               )),
-                          Container(
+                        ),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Container(
                               padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(35),
@@ -160,61 +168,61 @@ class _RegistrationscState extends State<Registrationsc> {
                                       size: 29,
                                     )),
                               )),
-                          Expanded(
-                            child: RoundedButton(
-                                title: 'Register',
-                                color: Colors.purple,
-                                onPessed: () async {
+                        ),
+                        Expanded(
+                          child: RoundedButton(
+                              title: 'Register',
+                              color: Colors.purple,
+                              onPessed: () async {
+                                setState(() {
+                                  showSpinner = true;
+                                });
+                                try {
+                                  final newUser = await _auth
+                                      .createUserWithEmailAndPassword(
+                                          email: email,
+                                          password:
+                                              password); //we are using async is to be sure that we are create a proper authentication
+                                  Navigator.pushNamed(context, HomeScreen.id);
                                   setState(() {
-                                    showSpinner = true;
-                                  });
-                                  try {
-                                    final newUser = await _auth
-                                        .createUserWithEmailAndPassword(
-                                            email: email,
-                                            password:
-                                                password); //we are using async is to be sure that we are create a proper authentication
-                                    Navigator.pushNamed(context, HomeScreen.id);
-                                    setState(() {
-                                      showSpinner = false;
-                                    }); //if this user is authenticate dhten it ets saved and then it is sent chat screen
-                                  } //try
-                                  catch (e) {
-                                    print(e);
-                                  } //catch
-                                }),
-                          ),
-                          Row(
-                            children: <Widget>[
-                              const SizedBox(
-                                width: 66.0,
-                              ),
-                              const Text(
-                                'forgot your password?',
+                                    showSpinner = false;
+                                  }); //if this user is authenticate dhten it ets saved and then it is sent chat screen
+                                } //try
+                                catch (e) {
+                                  print(e);
+                                } //catch
+                              }),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            const SizedBox(
+                              width: 66.0,
+                            ),
+                            const Text(
+                              'forgot your password?',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black45),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, GetStarted.id);
+                              },
+                              child: const Text(
+                                'click here',
                                 style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black45),
+                                    decoration: TextDecoration.underline,
+                                    fontSize: 14),
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, GetStarted.id);
-                                },
-                                child: const Text(
-                                  'click here',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      fontSize: 14),
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
+                            )
+                          ],
+                        )
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
