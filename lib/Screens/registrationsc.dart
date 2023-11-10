@@ -183,7 +183,7 @@ class _RegistrationscState extends State<Registrationsc> {
                                           email: email,
                                           password:
                                               password); //we are using async is to be sure that we are create a proper authentication
-                                  Navigator.pushNamed(context, HomeScreen.id);
+
                                   setState(() {
                                     showSpinner = false;
                                   }); //if this user is authenticate dhten it ets saved and then it is sent chat screen

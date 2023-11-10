@@ -171,11 +171,10 @@ class _GetStartedState extends State<GetStarted> {
                                   });
                                   try {
                                     final User =
-                                        _auth.signInWithEmailAndPassword(
+                                        await _auth.signInWithEmailAndPassword(
                                             email: email, password: password);
                                     print("passed");
-                                    Navigator.pushReplacementNamed(
-                                        context, HomeScreen.id);
+
                                     setState(() {
                                       showSpinner = false;
                                     });
