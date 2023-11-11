@@ -62,7 +62,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   title: 'GETTING STARTED',
                   color: const Color.fromRGBO(74, 218, 88, 1),
                   onPessed: () {
-                    Navigator.pushNamed(context, GetStarted.id);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => GetStarted())));
                   },
                 ),
               ],

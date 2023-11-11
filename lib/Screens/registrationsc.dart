@@ -1,4 +1,5 @@
 import 'package:breathe_fresh/Screens/getStarted.dart';
+import 'package:breathe_fresh/Screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'package:breathe_fresh/Components/Constants.dart';
@@ -28,43 +29,42 @@ class _RegistrationscState extends State<Registrationsc> {
       home: Scaffold(
         body: ModalProgressHUD(
           inAsyncCall: showSpinner,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('Images/Pollutionlogin3.png'),
-                fit: BoxFit.cover,
+          child: SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('Images/Pollutionlogin3.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            child: Column(
-              children: <Widget>[
-                const SizedBox(
-                  height: 150.0,
-                ),
-                const Text(
-                  'Create Your \nAccount',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 42,
-                      color: Colors.white70),
-                  textAlign: TextAlign.center,
-                ),
-                const Text(
-                  '____________\n Join the community to \nBreathe Fresh!!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                      wordSpacing: 1.0),
-                ),
-                const SizedBox(
-                  height: 130.0,
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
+              child: Column(
+                children: <Widget>[
+                  const SizedBox(
+                    height: 150.0,
+                  ),
+                  const Text(
+                    'Create Your \nAccount',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 42,
+                        color: Colors.white70),
+                    textAlign: TextAlign.center,
+                  ),
+                  const Text(
+                    '____________\n Join the community to \nBreathe Fresh!!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                        wordSpacing: 1.0),
+                  ),
+                  const SizedBox(
+                    height: 130.0,
+                  ),
+                  Container(
                     width: 400,
                     height: 390,
                     decoration: BoxDecoration(
@@ -174,22 +174,19 @@ class _RegistrationscState extends State<Registrationsc> {
                               title: 'Register',
                               color: Colors.purple,
                               onPessed: () async {
-                                setState(() {
-                                  showSpinner = true;
-                                });
                                 try {
+                                  print(email);
+                                  print(password);
                                   final newUser = await _auth
                                       .createUserWithEmailAndPassword(
                                           email: email,
                                           password:
                                               password); //we are using async is to be sure that we are create a proper authentication
 
-                                  setState(() {
-                                    showSpinner = false;
-                                  }); //if this user is authenticate dhten it ets saved and then it is sent chat screen
+                                  //if this user is authenticate dhten it ets saved and then it is sent chat screen
                                 } //try
                                 catch (e) {
-                                  print(e);
+                                  showErrorDialog(context, e.toString());
                                 } //catch
                               }),
                         ),
@@ -207,7 +204,10 @@ class _RegistrationscState extends State<Registrationsc> {
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, GetStarted.id);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => GetStarted()));
                               },
                               child: const Text(
                                 'click here',
@@ -221,12 +221,32 @@ class _RegistrationscState extends State<Registrationsc> {
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
   }
+}
+
+void showErrorDialog(BuildContext context, String errorMessage) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Error'),
+        content: Text(errorMessage),
+        actions: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
 }
