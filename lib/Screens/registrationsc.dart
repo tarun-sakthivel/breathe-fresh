@@ -1,7 +1,5 @@
 import 'package:breathe_fresh/Screens/getStarted.dart';
-import 'package:breathe_fresh/Screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'homeScreen.dart';
 import 'package:breathe_fresh/Components/Constants.dart';
 import 'package:breathe_fresh/Components/RoundedButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -207,7 +205,7 @@ class _RegistrationscState extends State<Registrationsc> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => GetStarted()));
+                                        builder: (context) => const GetStarted()));
                               },
                               child: const Text(
                                 'click here',
@@ -236,14 +234,14 @@ void showErrorDialog(BuildContext context, String errorMessage) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Error'),
+        title: const Text('Error'),
         content: Text(errorMessage),
         actions: <Widget>[
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('OK'),
+            child: const Text('OK'),
           ),
         ],
       );

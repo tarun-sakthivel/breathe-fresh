@@ -248,7 +248,10 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, HomeScreen.id);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
                     },
                     icon: const Icon(Icons.home),
                     iconSize: 40,
@@ -259,7 +262,8 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Moderate.id);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Moderate()));
                     },
                     icon: const Icon(
                       Icons.refresh,

@@ -74,6 +74,7 @@ flutter:
     - Images/indoor1.png
     - Images/outdoor1.png
     - Images/outdoor.png
+    - Images/getipspg.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

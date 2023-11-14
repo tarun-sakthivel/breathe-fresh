@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'Hazardous.dart';
-import 'getStarted.dart';
+import 'gettips.dart';
 
 class IndoorScreen extends StatefulWidget {
   static String id = 'IndoorScreen';
@@ -78,7 +76,10 @@ class _IndoorScreenState extends State<IndoorScreen> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50))),
                         onPressed: () {
-                          Navigator.pushNamed(context, HomeScreen.id);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => gettips()));
                         },
                         child: const Text(
                           'Get Tips',
@@ -192,7 +193,10 @@ class _IndoorScreenState extends State<IndoorScreen> {
                       ),
                       IconButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, HomeScreen.id);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
                         },
                         icon: const Icon(Icons.home),
                         iconSize: 40,

@@ -5,7 +5,6 @@ import 'package:breathe_fresh/Components/Constants.dart';
 import 'registrationsc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'registrationsc.dart';
 
 class GetStarted extends StatefulWidget {
   static String id = 'getStarted';
@@ -44,7 +43,7 @@ class _GetStartedState extends State<GetStarted> {
               child: ListView.builder(
                 itemCount: 1,
                 itemBuilder: (context, index) {
-                  return Container(
+                  return SizedBox(
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height,
                     child: Column(
@@ -204,20 +203,14 @@ class _GetStartedState extends State<GetStarted> {
                                         );
 
                                         print("passed");
-                                        if (User != null) {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: ((context) =>
-                                                  HomeScreen()),
-                                            ),
-                                          );
-                                        } else {
-                                          print(
-                                              "==================================");
-                                          print("error");
-                                        }
-                                      } catch (e) {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: ((context) =>
+                                                const HomeScreen()),
+                                          ),
+                                        );
+                                                                            } catch (e) {
                                         showErrorDialog(context, e.toString());
                                       }
                                     },
@@ -243,7 +236,7 @@ class _GetStartedState extends State<GetStarted> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: ((context) =>
-                                                    Registrationsc())));
+                                                    const Registrationsc())));
                                       },
                                       child: const Text(
                                         'click here',

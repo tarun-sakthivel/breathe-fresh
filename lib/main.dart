@@ -1,5 +1,6 @@
 import 'package:breathe_fresh/Screens/OutdoorScreen.dart';
 import 'package:breathe_fresh/Screens/getStarted.dart';
+import 'package:breathe_fresh/Screens/gettips.dart';
 import 'package:flutter/material.dart';
 import 'Screens/welcome_screen.dart';
 import 'Screens/homeScreen.dart';
@@ -36,7 +37,8 @@ class breathe_fresh extends StatelessWidget {
         Moderate.id: (context) => const Moderate(),
         Unhealthy.id: (context) => const Unhealthy(),
         Hazrdous.id: (context) => const Hazrdous(),
-        Registrationsc.id: (context) => const Registrationsc()
+        Registrationsc.id: (context) => const Registrationsc(),
+        gettips.id: (context) => const gettips(),
       },
     );
   }

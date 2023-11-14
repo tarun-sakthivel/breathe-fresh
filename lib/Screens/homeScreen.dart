@@ -3,6 +3,8 @@ import 'package:breathe_fresh/Screens/IndoorScreen.dart';
 import 'package:breathe_fresh/Screens/OutdoorScreen.dart';
 import 'package:breathe_fresh/Screens/getStarted.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'Moderate.dart';
+import 'Unhealthy.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -81,7 +83,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                         borderRadius:
                                             BorderRadius.circular(45))),
                                 onPressed: () {
-                                  Navigator.pushNamed(context, IndoorScreen.id);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              IndoorScreen()));
                                 },
                                 child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[
@@ -124,8 +130,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                         borderRadius:
                                             BorderRadius.circular(45))),
                                 onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, OutdoorScreen.id);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              OutdoorScreen()));
                                 },
                                 child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[
@@ -168,5 +177,46 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+    Column(children: [
+      if (AQI > 0 && AQI <= 45) ...[
+        IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, OutdoorScreen.id);
+            },
+            icon: Icon(
+              Icons.next_plan_outlined,
+              size: 44,
+            ))
+      ] else if (AQI > 45 && AQI < 100) ...[
+        IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, Moderate.id);
+            },
+            icon: Icon(
+              Icons.next_plan_outlined,
+              size: 44,
+            ))
+      ] else if (AQI >= 100 && AQI <= 189) ...[
+        IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, Unhealthy.id);
+            },
+            icon: Icon(
+              Icons.next_plan_outlined,
+              size: 44,
+            ))
+      ] else if (AQI >= 190) ...[
+        IconButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Hazrdous()));
+          },
+          icon: Icon(
+            Icons.next_plan_outlined,
+            size: 44,
+          ),
+        )
+      ]
+    ]);
   }
 }
