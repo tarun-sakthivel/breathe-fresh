@@ -5,11 +5,11 @@ import 'homeScreen.dart';
 
 class gettips extends StatefulWidget {
   static String id = "gettips";
-  static String state1 = "good";
+  static String state1 = "Good";
   static String gas =
       "Particulate Matter(PM), \nNitrogen Dioxide (NO2),\nSulfur Dioxide (SO2),\n Ozone (O3),\n Carbon Monoxide (CO).";
   static String mask =
-      "Surgical Masks, N95 \nRespirators, \nKN95 Masks,\n Reusable Cloth Masks, \nP100 Respirators.";
+      "Surgical Masks, N95 \n Respirators, KN95 Masks,\n Reusable Cloth Masks, \nP100 Respirators.";
   static String precausion =
       "Minimize exposure to\n polluted air by staying \n indoors on days with\n high pollution levels,\n especially during peak\n traffic hours.";
   const gettips({super.key});
@@ -25,7 +25,7 @@ class _gettipsState extends State<gettips> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('Images/getipspg.png'), fit: BoxFit.cover)),
           width: double.infinity,
@@ -33,105 +33,118 @@ class _gettipsState extends State<gettips> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Row(children: <Widget>[
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => IndoorScreen()));
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_ios_new_sharp,
-                    color: Colors.white,
-                    size: 45,
+              Container(
+                alignment: Alignment.topCenter,
+                color: Colors.black.withOpacity(0.4),
+                height: 75,
+                child: Row(children: <Widget>[
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const IndoorScreen()));
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new_sharp,
+                      color: Color.fromARGB(255, 215, 211, 211),
+                      size: 45,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 60,
-                ),
-                Center(
-                  child: Text(
-                    'HEALTH TIPS',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 35,
-                        fontFamily: 'Roboto'),
+                  const SizedBox(
+                    width: 60,
                   ),
-                ),
-              ]),
-              SizedBox(
-                height: 20.0,
+                  const Center(
+                    child: Text(
+                      'HEALTH TIPS',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 254, 254, 254),
+                          fontSize: 30,
+                          fontFamily: 'Roboto'),
+                    ),
+                  ),
+                ]),
+              ),
+              const SizedBox(
+                height: 10.0,
               ),
               Text(
-                "Air Quality : " + gettips.state1,
+                "Air Quality : ${gettips.state1}",
                 style: TextStyle(
+                    backgroundColor: Colors.black.withOpacity(0.4),
                     fontFamily: 'Roboto',
-                    fontSize: 35,
+                    fontSize: 30,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white),
+                    color: const Color.fromARGB(255, 255, 252, 252)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               FrostedGlassBox(
                   theWidth: 330.0,
                   theHeight: 160.0,
                   theChild: Row(children: <Widget>[
-                    Icon(
+                    const Icon(
                       Icons.co2_outlined,
                       size: 70,
-                      color: Colors.black,
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(
                       gettips.gas,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: const TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 215, 211, 211)),
                     ),
                   ])),
               FrostedGlassBox(
                   theWidth: 330.0,
                   theHeight: 160.0,
                   theChild: Row(children: <Widget>[
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(
                       gettips.mask,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
-                        color: Colors.black,
+                        color: Color.fromARGB(255, 215, 211, 211),
                       ),
                     ),
-                    SizedBox(
-                      width: 25,
+                    const SizedBox(
+                      width: 15,
                     ),
-                    Icon(
-                      Icons.masks,
-                      size: 70,
-                      color: Colors.black,
-                    ),
+                    const SizedBox(
+                        width: 63,
+                        height: 85,
+                        child: Image(image: AssetImage('Icons/ptdmask.png')))
                   ])),
               FrostedGlassBox(
                   theWidth: 330.0,
                   theHeight: 160.0,
                   theChild: Row(children: <Widget>[
-                    Icon(
-                      Icons.emergency,
-                      size: 70,
-                      color: Colors.black,
+                    const SizedBox(
+                      width: 5,
                     ),
-                    SizedBox(
-                      width: 40,
+                    const SizedBox(
+                      height: 73,
+                      width: 85,
+                      child: Image(image: AssetImage('Icons/hrtpulse.png')),
+                    ),
+                    const SizedBox(
+                      width: 25,
                     ),
                     Text(
                       gettips.precausion,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 215, 211, 211),
+                      ),
                     ),
                   ])),
               Flexible(
@@ -141,7 +154,7 @@ class _gettipsState extends State<gettips> {
                   width: 330,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: Colors.white.withOpacity(0.5),
+                    color: Colors.white.withOpacity(0.3),
                   ),
                   child: Row(
                     children: <Widget>[
@@ -153,7 +166,7 @@ class _gettipsState extends State<gettips> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                                  builder: (context) => const HomeScreen()));
                         },
                         icon: const Icon(Icons.home),
                         iconSize: 40,
@@ -167,7 +180,7 @@ class _gettipsState extends State<gettips> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => gettips()));
+                                  builder: (context) => const gettips()));
                         },
                         icon: const Icon(
                           Icons.refresh,

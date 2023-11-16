@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
-import 'Unhealthy.dart';
 
 class Moderate extends StatefulWidget {
   static String id = 'Moderate';
@@ -11,9 +10,12 @@ class Moderate extends StatefulWidget {
 }
 
 class _ModerateState extends State<Moderate> {
+  var AQI = 63;
+  final HomeScreen1 obj = HomeScreen1();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
           children: <Widget>[
@@ -37,7 +39,10 @@ class _ModerateState extends State<Moderate> {
                       ),
                       IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, HomeScreen.id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()));
                           },
                           icon: const Icon(
                             Icons.arrow_back_ios_new_rounded,
@@ -51,6 +56,7 @@ class _ModerateState extends State<Moderate> {
                       const Text(
                         'Air Quality',
                         style: TextStyle(
+                            fontFamily: 'Roboto',
                             fontSize: 22,
                             fontWeight: FontWeight.w400,
                             color: Colors.white),
@@ -96,6 +102,7 @@ class _ModerateState extends State<Moderate> {
                   ),
                   const Text("Moderate",
                       style: TextStyle(
+                        fontFamily: 'Roboto',
                         color: Colors.white,
                         fontSize: 60,
                         fontWeight: FontWeight.w400,
@@ -126,6 +133,7 @@ class _ModerateState extends State<Moderate> {
                         Text(
                           'AQI',
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 23,
                               fontWeight: FontWeight.w400,
                               color: Colors.white),
@@ -165,6 +173,7 @@ class _ModerateState extends State<Moderate> {
                     children: <Widget>[
                       Text("Hazardous",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -173,6 +182,7 @@ class _ModerateState extends State<Moderate> {
                       ),
                       Text("Moderate",
                           style: TextStyle(
+                              fontFamily: "Roboto",
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -181,6 +191,7 @@ class _ModerateState extends State<Moderate> {
                       ),
                       Text("Unhealthy",
                           style: TextStyle(
+                              fontFamily: "Roboto",
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -189,6 +200,7 @@ class _ModerateState extends State<Moderate> {
                       ),
                       Text("Very Unhealthy",
                           style: TextStyle(
+                              fontFamily: "Roboto",
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -197,6 +209,7 @@ class _ModerateState extends State<Moderate> {
                       ),
                       Text("Hazardous",
                           style: TextStyle(
+                              fontFamily: "Roboto",
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -214,6 +227,7 @@ class _ModerateState extends State<Moderate> {
               ),
               Text("report ",
                   style: TextStyle(
+                      fontFamily: "Roboto",
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: Colors.black54)),
@@ -223,6 +237,7 @@ class _ModerateState extends State<Moderate> {
               children: <Widget>[
                 const Text("Polluted\nMist",
                     style: TextStyle(
+                      fontFamily: "Roboto",
                       fontSize: 40,
                       fontWeight: FontWeight.w600,
                     )),
@@ -249,7 +264,10 @@ class _ModerateState extends State<Moderate> {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, HomeScreen.id);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
                     },
                     icon: const Icon(Icons.home),
                     iconSize: 40,
@@ -260,7 +278,7 @@ class _ModerateState extends State<Moderate> {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Unhealthy.id);
+                      obj.Outdoorstate(context, AQI);
                     },
                     icon: const Icon(
                       Icons.refresh,

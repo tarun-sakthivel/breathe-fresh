@@ -75,7 +75,12 @@ flutter:
     - Images/outdoor1.png
     - Images/outdoor.png
     - Images/getipspg.png
-
+    - Icons/mask.png
+    - Icons/mslkic.png
+    - Icons/hrtrt.png
+    - Icons/heart-rate.png
+    - Icons/hrtpulse.png
+    - Icons/ptdmask.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
-import 'Hazardous.dart';
 
 class Unhealthy extends StatefulWidget {
   static String id = 'Unhealthy';
+
   const Unhealthy({super.key});
 
   @override
@@ -11,6 +11,8 @@ class Unhealthy extends StatefulWidget {
 }
 
 class _UnhealthyState extends State<Unhealthy> {
+  var AQI = 63;
+  final HomeScreen1 obj = HomeScreen1();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +40,10 @@ class _UnhealthyState extends State<Unhealthy> {
                       ),
                       IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, HomeScreen.id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()));
                           },
                           icon: const Icon(
                             Icons.arrow_back_ios_new_rounded,
@@ -52,6 +57,7 @@ class _UnhealthyState extends State<Unhealthy> {
                       const Text(
                         'Air Quality',
                         style: TextStyle(
+                            fontFamily: 'Roboto',
                             fontSize: 22,
                             fontWeight: FontWeight.w400,
                             color: Colors.white),
@@ -97,6 +103,7 @@ class _UnhealthyState extends State<Unhealthy> {
                   ),
                   const Text("Unhealthy",
                       style: TextStyle(
+                        fontFamily: 'Roboto',
                         color: Colors.white,
                         fontSize: 60,
                         fontWeight: FontWeight.w400,
@@ -127,6 +134,7 @@ class _UnhealthyState extends State<Unhealthy> {
                         Text(
                           'AQI',
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 23,
                               fontWeight: FontWeight.w400,
                               color: Colors.white),
@@ -137,6 +145,7 @@ class _UnhealthyState extends State<Unhealthy> {
                         Text(
                           '189',
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 32,
                               fontWeight: FontWeight.w600,
                               color: Colors.white),
@@ -166,6 +175,7 @@ class _UnhealthyState extends State<Unhealthy> {
                     children: <Widget>[
                       Text("Hazardous",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -174,6 +184,7 @@ class _UnhealthyState extends State<Unhealthy> {
                       ),
                       Text("Moderate",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -182,6 +193,7 @@ class _UnhealthyState extends State<Unhealthy> {
                       ),
                       Text("Unhealthy",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -190,6 +202,7 @@ class _UnhealthyState extends State<Unhealthy> {
                       ),
                       Text("Very Unhealthy",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -198,6 +211,7 @@ class _UnhealthyState extends State<Unhealthy> {
                       ),
                       Text("Hazardous",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -215,6 +229,7 @@ class _UnhealthyState extends State<Unhealthy> {
               ),
               Text("report ",
                   style: TextStyle(
+                      fontFamily: 'Roboto',
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: Colors.black54)),
@@ -224,6 +239,7 @@ class _UnhealthyState extends State<Unhealthy> {
               children: <Widget>[
                 const Text("Stale \nAir",
                     style: TextStyle(
+                      fontFamily: 'Roboto',
                       fontSize: 40,
                       fontWeight: FontWeight.w600,
                     )),
@@ -247,7 +263,10 @@ class _UnhealthyState extends State<Unhealthy> {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, HomeScreen.id);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => const HomeScreen())));
                     },
                     icon: const Icon(Icons.home),
                     iconSize: 40,
@@ -257,9 +276,7 @@ class _UnhealthyState extends State<Unhealthy> {
                     width: 60,
                   ),
                   IconButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, Hazrdous.id);
-                    },
+                    onPressed: () => obj.Outdoorstate(context, AQI),
                     icon: const Icon(
                       Icons.refresh,
                       color: Colors.black,

@@ -2,6 +2,8 @@ import 'Moderate.dart';
 
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
+import 'Hazardous.dart';
+import 'Unhealthy.dart';
 
 class OutdoorScreen extends StatefulWidget {
   static String id = 'OutdoorScreen';
@@ -12,6 +14,8 @@ class OutdoorScreen extends StatefulWidget {
 }
 
 class _OutdoorScreenState extends State<OutdoorScreen> {
+  var AQI = 63;
+  final HomeScreen1 obj = HomeScreen1();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,7 +43,10 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                       ),
                       IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, HomeScreen.id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()));
                           },
                           icon: const Icon(
                             Icons.arrow_back_ios_new_rounded,
@@ -98,6 +105,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                   ),
                   const Text("Green",
                       style: TextStyle(
+                        fontFamily: 'Roboto',
                         color: Colors.white,
                         fontSize: 60,
                         fontWeight: FontWeight.w400,
@@ -128,6 +136,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                         Text(
                           'AQI',
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 23,
                               fontWeight: FontWeight.w400,
                               color: Colors.white),
@@ -138,6 +147,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                         Text(
                           '44',
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 32,
                               fontWeight: FontWeight.w600,
                               color: Colors.white),
@@ -167,6 +177,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                     children: <Widget>[
                       Text("Hazardous",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -175,6 +186,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                       ),
                       Text("Moderate",
                           style: TextStyle(
+                              fontFamily: "Roboto",
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -183,6 +195,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                       ),
                       Text("Unhealthy",
                           style: TextStyle(
+                              fontFamily: "Roboto",
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -191,6 +204,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                       ),
                       Text("Very Unhealthy",
                           style: TextStyle(
+                              fontFamily: "Roboto",
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -199,6 +213,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                       ),
                       Text("Hazardous",
                           style: TextStyle(
+                              fontFamily: "Roboto",
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -216,6 +231,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
               ),
               Text("report ",
                   style: TextStyle(
+                      fontFamily: "Roboto",
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: Colors.black54)),
@@ -225,6 +241,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
               children: <Widget>[
                 const Text("Clean \nBreeze",
                     style: TextStyle(
+                      fontFamily: "Roboto",
                       fontSize: 40,
                       fontWeight: FontWeight.w600,
                     )),
@@ -251,7 +268,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                              builder: (context) => const HomeScreen()));
                     },
                     icon: const Icon(Icons.home),
                     iconSize: 40,
@@ -260,17 +277,63 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                   const SizedBox(
                     width: 60,
                   ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Moderate()));
-                    },
-                    icon: const Icon(
-                      Icons.refresh,
-                      color: Colors.black,
-                      size: 40,
-                    ),
-                  ),
+                  Column(children: [
+                    if (AQI > 0 && AQI <= 45) ...[
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const OutdoorScreen()));
+                        },
+                        icon: const Icon(
+                          Icons.refresh,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                      ),
+                    ] else if (AQI > 45 && AQI < 100) ...[
+                      IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Moderate()));
+                          },
+                          icon: const Icon(
+                            Icons.refresh,
+                            color: Colors.black,
+                            size: 40,
+                          ))
+                    ] else if (AQI >= 100 && AQI <= 189) ...[
+                      IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (Context) => const Unhealthy()));
+                          },
+                          icon: const Icon(
+                            Icons.refresh,
+                            color: Colors.black,
+                            size: 40,
+                          ))
+                    ] else if (AQI >= 190) ...[
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Hazrdous()));
+                        },
+                        icon: const Icon(
+                          Icons.refresh,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                      )
+                    ]
+                  ]),
                   const SizedBox(width: 80),
                   const Icon(
                     Icons.send,

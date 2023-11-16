@@ -49,6 +49,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                   ),
                   const Text("379",
                       style: TextStyle(
+                        fontFamily: 'Roboto',
                         color: Colors.white,
                         fontSize: 60,
                         fontWeight: FontWeight.w400,
@@ -59,6 +60,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                   const Text(
                     "HARAZDOUS",
                     style: TextStyle(
+                        fontFamily: 'Roboto',
                         color: Colors.white,
                         fontSize: 32,
                         fontWeight: FontWeight.w400),
@@ -79,11 +81,12 @@ class _IndoorScreenState extends State<IndoorScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => gettips()));
+                                  builder: (context) => const gettips()));
                         },
                         child: const Text(
                           'Get Tips',
                           style: TextStyle(
+                            fontFamily: 'Roboto',
                             color: Colors.black,
                             fontSize: 24,
                             fontWeight: FontWeight.w400,
@@ -102,6 +105,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                 const Text(
                   'AQI Forecast',
                   style: TextStyle(
+                      fontFamily: 'Roboto',
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                       color: Colors.black54),
@@ -126,6 +130,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                           Text(
                             '60',
                             style: TextStyle(
+                                fontFamily: 'Roboto',
                                 fontSize: 40,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black),
@@ -133,6 +138,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                           Text(
                             'Tuesday',
                             style: TextStyle(
+                                fontFamily: 'Roboto',
                                 fontSize: 20,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black),
@@ -156,6 +162,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                             Text(
                               '150',
                               style: TextStyle(
+                                  fontFamily: 'Roboto',
                                   fontSize: 40,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black),
@@ -163,6 +170,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                             Text(
                               'Wednesday',
                               style: TextStyle(
+                                  fontFamily: 'Roboto',
                                   fontSize: 20,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black),

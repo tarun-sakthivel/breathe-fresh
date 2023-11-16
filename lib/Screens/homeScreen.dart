@@ -2,7 +2,7 @@ import 'package:breathe_fresh/Screens/Hazardous.dart';
 import 'package:breathe_fresh/Screens/IndoorScreen.dart';
 import 'package:breathe_fresh/Screens/OutdoorScreen.dart';
 import 'package:breathe_fresh/Screens/getStarted.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:breathe_fresh/Screens/registrationsc.dart';
 import 'Moderate.dart';
 import 'Unhealthy.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var AQI = 32;
+  late String Username1;
+  var AQI = 63;
+  HomeScreen1 obj = HomeScreen1();
+  Registrationsc rc = const Registrationsc();
+  testing ts = testing();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,21 +39,22 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.fromLTRB(340, 40, 20, 10),
+                padding: const EdgeInsets.fromLTRB(340, 40, 20, 10),
                 child: IconButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, GetStarted.id);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const GetStarted()));
                   },
-                  icon: Icon(Icons.logout_outlined),
+                  icon: const Icon(Icons.logout_outlined),
                   iconSize: 45,
                   color: Colors.black,
                   hoverColor: Colors.black26,
                 ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.fromLTRB(88, 20, 20, 10),
-              child: const Text(
+              child: Text(
                 '\n\nBREATHE \n FRESH!!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -63,8 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Expanded(
-                    child: const SizedBox(
+                  const Expanded(
+                    child: SizedBox(
                       height: 330,
                     ),
                   ),
@@ -87,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              IndoorScreen()));
+                                              const IndoorScreen()));
                                 },
                                 child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[
@@ -134,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              OutdoorScreen()));
+                                              const OutdoorScreen()));
                                 },
                                 child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[
@@ -177,43 +183,57 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+}
+
+class HomeScreen1 {
+  var AQI;
+  Outdoorstate(BuildContext context, var AQI) {
     Column(children: [
       if (AQI > 0 && AQI <= 45) ...[
         IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, OutdoorScreen.id);
-            },
-            icon: Icon(
-              Icons.next_plan_outlined,
-              size: 44,
-            ))
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const OutdoorScreen()));
+          },
+          icon: const Icon(
+            Icons.refresh,
+            color: Colors.black,
+            size: 40,
+          ),
+        ),
       ] else if (AQI > 45 && AQI < 100) ...[
         IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, Moderate.id);
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => const Moderate()));
             },
-            icon: Icon(
-              Icons.next_plan_outlined,
-              size: 44,
+            icon: const Icon(
+              Icons.refresh,
+              color: Colors.black,
+              size: 40,
             ))
       ] else if (AQI >= 100 && AQI <= 189) ...[
         IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, Unhealthy.id);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (Context) => const Unhealthy()));
             },
-            icon: Icon(
-              Icons.next_plan_outlined,
-              size: 44,
+            icon: const Icon(
+              Icons.refresh,
+              color: Colors.black,
+              size: 40,
             ))
       ] else if (AQI >= 190) ...[
         IconButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Hazrdous()));
+                context, MaterialPageRoute(builder: (context) => const Hazrdous()));
           },
-          icon: Icon(
-            Icons.next_plan_outlined,
-            size: 44,
+          icon: const Icon(
+            Icons.refresh,
+            color: Colors.black,
+            size: 40,
           ),
         )
       ]

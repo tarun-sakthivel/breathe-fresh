@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
-import 'OutdoorScreen.dart';
 
 class Hazrdous extends StatefulWidget {
   static String id = 'Hazrdous';
+
   const Hazrdous({super.key});
 
   @override
@@ -11,6 +11,8 @@ class Hazrdous extends StatefulWidget {
 }
 
 class _HazrdousState extends State<Hazrdous> {
+  var AQI = 63;
+  final HomeScreen1 obj = HomeScreen1();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +40,10 @@ class _HazrdousState extends State<Hazrdous> {
                       ),
                       IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, HomeScreen.id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()));
                           },
                           icon: const Icon(
                             Icons.arrow_back_ios_new_rounded,
@@ -52,6 +57,7 @@ class _HazrdousState extends State<Hazrdous> {
                       const Text(
                         'Air Quality',
                         style: TextStyle(
+                            fontFamily: 'Roboto',
                             fontSize: 22,
                             fontWeight: FontWeight.w400,
                             color: Colors.white),
@@ -97,6 +103,7 @@ class _HazrdousState extends State<Hazrdous> {
                   ),
                   const Text("Hazardous",
                       style: TextStyle(
+                        fontFamily: 'Roboto',
                         color: Colors.white,
                         fontSize: 60,
                         fontWeight: FontWeight.w400,
@@ -127,6 +134,7 @@ class _HazrdousState extends State<Hazrdous> {
                         Text(
                           'AQI',
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 23,
                               fontWeight: FontWeight.w400,
                               color: Colors.white),
@@ -137,6 +145,7 @@ class _HazrdousState extends State<Hazrdous> {
                         Text(
                           '699',
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 32,
                               fontWeight: FontWeight.w600,
                               color: Colors.white),
@@ -166,6 +175,7 @@ class _HazrdousState extends State<Hazrdous> {
                     children: <Widget>[
                       Text("Hazardous",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -174,6 +184,7 @@ class _HazrdousState extends State<Hazrdous> {
                       ),
                       Text("Moderate",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -182,6 +193,7 @@ class _HazrdousState extends State<Hazrdous> {
                       ),
                       Text("Unhealthy",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -190,6 +202,7 @@ class _HazrdousState extends State<Hazrdous> {
                       ),
                       Text("Very Unhealthy",
                           style: TextStyle(
+                              fontFamily: 'Roboto',
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.white)),
@@ -210,6 +223,7 @@ class _HazrdousState extends State<Hazrdous> {
               ),
               Text("report ",
                   style: TextStyle(
+                      fontFamily: 'Roboto',
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: Colors.black54)),
@@ -219,6 +233,7 @@ class _HazrdousState extends State<Hazrdous> {
               children: <Widget>[
                 const Text("Deadly \nthreat",
                     style: TextStyle(
+                      fontFamily: 'Roboto',
                       fontSize: 40,
                       fontWeight: FontWeight.w600,
                     )),
@@ -242,7 +257,10 @@ class _HazrdousState extends State<Hazrdous> {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, HomeScreen.id);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
                     },
                     icon: const Icon(Icons.home),
                     iconSize: 40,
@@ -253,7 +271,7 @@ class _HazrdousState extends State<Hazrdous> {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, OutdoorScreen.id);
+                      obj.Outdoorstate(context, AQI);
                     },
                     icon: const Icon(
                       Icons.refresh,

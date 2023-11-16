@@ -210,7 +210,7 @@ class _GetStartedState extends State<GetStarted> {
                                                 const HomeScreen()),
                                           ),
                                         );
-                                                                            } catch (e) {
+                                      } catch (e) {
                                         showErrorDialog(context, e.toString());
                                       }
                                     },

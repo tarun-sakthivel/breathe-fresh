@@ -46,15 +46,17 @@ class _RegistrationscState extends State<Registrationsc> {
                     'Create Your \nAccount',
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
+                        fontFamily: 'Roboto',
                         fontSize: 42,
                         color: Colors.white70),
                     textAlign: TextAlign.center,
                   ),
                   const Text(
-                    '____________\n Join the community to \nBreathe Fresh!!',
+                    '______________________________\n Join the community to \nBreathe Fresh!!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 14,
+                        fontFamily: 'Roboto',
                         fontWeight: FontWeight.w400,
                         color: Colors.white,
                         wordSpacing: 1.0),
@@ -101,7 +103,10 @@ class _RegistrationscState extends State<Registrationsc> {
                                   email = value;
                                 },
                                 decoration: ktextFieldDecoration.copyWith(
-                                    hintStyle: const TextStyle(fontSize: 23),
+                                    hintStyle: const TextStyle(
+                                      fontSize: 23,
+                                      fontFamily: 'Roboto',
+                                    ),
                                     hintText: 'Email',
                                     contentPadding:
                                         const EdgeInsets.fromLTRB(1, 0, 0, 0),
@@ -128,7 +133,10 @@ class _RegistrationscState extends State<Registrationsc> {
                                   Username = value;
                                 },
                                 decoration: ktextFieldDecoration.copyWith(
-                                    hintStyle: const TextStyle(fontSize: 23),
+                                    hintStyle: const TextStyle(
+                                      fontSize: 23,
+                                      fontFamily: 'Roboto',
+                                    ),
                                     hintText: 'Username',
                                     contentPadding:
                                         const EdgeInsets.fromLTRB(1, 0, 0, 0),
@@ -156,7 +164,10 @@ class _RegistrationscState extends State<Registrationsc> {
                                   password = value;
                                 },
                                 decoration: ktextFieldDecoration.copyWith(
-                                    hintStyle: const TextStyle(fontSize: 23),
+                                    hintStyle: const TextStyle(
+                                      fontSize: 23,
+                                      fontFamily: 'Roboto',
+                                    ),
                                     hintText: 'Password',
                                     contentPadding:
                                         const EdgeInsets.fromLTRB(1, 0, 0, 0),
@@ -191,11 +202,12 @@ class _RegistrationscState extends State<Registrationsc> {
                         Row(
                           children: <Widget>[
                             const SizedBox(
-                              width: 66.0,
+                              width: 100.0,
                             ),
                             const Text(
                               'forgot your password?',
                               style: TextStyle(
+                                  fontFamily: 'Roboto',
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black45),
@@ -205,11 +217,13 @@ class _RegistrationscState extends State<Registrationsc> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const GetStarted()));
+                                        builder: (context) =>
+                                            const GetStarted()));
                               },
                               child: const Text(
                                 'click here',
                                 style: TextStyle(
+                                    fontFamily: 'Roboto',
                                     decoration: TextDecoration.underline,
                                     fontSize: 14),
                               ),
@@ -247,4 +261,10 @@ void showErrorDialog(BuildContext context, String errorMessage) {
       );
     },
   );
+}
+
+class testing {
+  String getusr(String Username) {
+    return Username;
+  }
 }
