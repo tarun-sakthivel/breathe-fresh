@@ -1,9 +1,11 @@
 import 'package:breathe_fresh/Screens/getStarted.dart';
+import 'package:breathe_fresh/Screens/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:breathe_fresh/Components/Constants.dart';
 import 'package:breathe_fresh/Components/RoundedButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 
 class Registrationsc extends StatefulWidget {
   static String id = 'registrationsc';
@@ -188,9 +190,12 @@ class _RegistrationscState extends State<Registrationsc> {
                                   print(password);
                                   final newUser = await _auth
                                       .createUserWithEmailAndPassword(
-                                          email: email,
-                                          password:
-                                              password); //we are using async is to be sure that we are create a proper authentication
+                                          email: email, password: password);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomeScreen()));
+                                  //we are using async is to be sure that we are create a proper authentication
 
                                   //if this user is authenticate dhten it ets saved and then it is sent chat screen
                                 } //try

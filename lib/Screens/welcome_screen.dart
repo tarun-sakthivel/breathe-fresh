@@ -19,7 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('Images/Pollutionlogin3.png'),
                 fit: BoxFit.cover),

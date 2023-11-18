@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'gettips.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class IndoorScreen extends StatefulWidget {
   static String id = 'IndoorScreen';
-  const IndoorScreen({super.key});
+  final storage = FirebaseStorage.instance;
+  IndoorScreen({super.key});
 
   @override
   State<IndoorScreen> createState() => _IndoorScreenState();

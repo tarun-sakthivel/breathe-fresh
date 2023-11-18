@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
+import 'gettips.dart';
 
 class Hazrdous extends StatefulWidget {
   static String id = 'Hazrdous';
@@ -280,10 +281,16 @@ class _HazrdousState extends State<Hazrdous> {
                     ),
                   ),
                   const SizedBox(width: 80),
-                  const Icon(
-                    Icons.send,
-                    color: Colors.black,
-                    size: 40,
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => gettips()));
+                    },
+                    icon: Icon(
+                      Icons.send,
+                      color: Colors.black,
+                      size: 40,
+                    ),
                   )
                 ],
               ),

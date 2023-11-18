@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
+import 'gettips.dart';
 
 class Unhealthy extends StatefulWidget {
   static String id = 'Unhealthy';
@@ -284,10 +285,16 @@ class _UnhealthyState extends State<Unhealthy> {
                     ),
                   ),
                   const SizedBox(width: 80),
-                  const Icon(
-                    Icons.send,
-                    color: Colors.black,
-                    size: 40,
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => gettips()));
+                    },
+                    icon: Icon(
+                      Icons.send,
+                      color: Colors.black,
+                      size: 40,
+                    ),
                   )
                 ],
               ),

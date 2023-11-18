@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'Hazardous.dart';
 import 'Unhealthy.dart';
+import 'gettips.dart';
 
 class OutdoorScreen extends StatefulWidget {
   static String id = 'OutdoorScreen';
@@ -335,10 +336,16 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                     ]
                   ]),
                   const SizedBox(width: 80),
-                  const Icon(
-                    Icons.send,
-                    color: Colors.black,
-                    size: 40,
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => gettips()));
+                    },
+                    icon: Icon(
+                      Icons.send,
+                      color: Colors.black,
+                      size: 40,
+                    ),
                   )
                 ],
               ),

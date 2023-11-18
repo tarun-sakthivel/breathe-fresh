@@ -196,13 +196,13 @@ class _GetStartedState extends State<GetStarted> {
                                     color: Colors.purple,
                                     onPessed: () async {
                                       try {
+                                        print("passed");
                                         final User = await _auth
                                             .signInWithEmailAndPassword(
                                           email: email,
                                           password: password,
                                         );
 
-                                        print("passed");
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(

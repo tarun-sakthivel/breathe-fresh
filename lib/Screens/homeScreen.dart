@@ -42,8 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.fromLTRB(340, 40, 20, 10),
                 child: IconButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const GetStarted()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const GetStarted()));
                   },
                   icon: const Icon(Icons.logout_outlined),
                   iconSize: 45,
@@ -93,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const IndoorScreen()));
+                                              IndoorScreen()));
                                 },
                                 child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[
@@ -205,8 +207,8 @@ class HomeScreen1 {
       ] else if (AQI > 45 && AQI < 100) ...[
         IconButton(
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const Moderate()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Moderate()));
             },
             icon: const Icon(
               Icons.refresh,
@@ -227,8 +229,8 @@ class HomeScreen1 {
       ] else if (AQI >= 190) ...[
         IconButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const Hazrdous()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Hazrdous()));
           },
           icon: const Icon(
             Icons.refresh,

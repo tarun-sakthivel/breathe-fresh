@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
+import 'gettips.dart';
 
 class Moderate extends StatefulWidget {
   static String id = 'Moderate';
@@ -287,10 +288,16 @@ class _ModerateState extends State<Moderate> {
                     ),
                   ),
                   const SizedBox(width: 80),
-                  const Icon(
-                    Icons.send,
-                    color: Colors.black,
-                    size: 40,
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => gettips()));
+                    },
+                    icon: Icon(
+                      Icons.send,
+                      color: Colors.black,
+                      size: 40,
+                    ),
                   )
                 ],
               ),

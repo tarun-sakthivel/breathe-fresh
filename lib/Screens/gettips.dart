@@ -46,7 +46,7 @@ class _gettipsState extends State<gettips> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const IndoorScreen()));
+                              builder: (context) => IndoorScreen()));
                     },
                     icon: const Icon(
                       Icons.arrow_back_ios_new_sharp,
