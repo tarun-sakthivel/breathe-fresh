@@ -5,7 +5,6 @@ import 'package:breathe_fresh/Components/Constants.dart';
 import 'package:breathe_fresh/Components/RoundedButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:firebase_app_check/firebase_app_check.dart';
 
 class Registrationsc extends StatefulWidget {
   static String id = 'registrationsc';
@@ -194,7 +193,8 @@ class _RegistrationscState extends State<Registrationsc> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HomeScreen()));
+                                          builder: (context) =>
+                                              const HomeScreen()));
                                   //we are using async is to be sure that we are create a proper authentication
 
                                   //if this user is authenticate dhten it ets saved and then it is sent chat screen

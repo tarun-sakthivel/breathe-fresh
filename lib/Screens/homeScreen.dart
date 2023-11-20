@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              IndoorScreen()));
+                                              const IndoorScreen()));
                                 },
                                 child: const Column(children: <Widget>[
                                   Stack(children: <Widget>[

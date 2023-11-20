@@ -283,10 +283,12 @@ class _HazrdousState extends State<Hazrdous> {
                   const SizedBox(width: 80),
                   IconButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => gettips()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const gettips()));
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.send,
                       color: Colors.black,
                       size: 40,

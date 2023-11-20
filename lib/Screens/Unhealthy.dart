@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'gettips.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final db = FirebaseFirestore.instance;
 
 class Unhealthy extends StatefulWidget {
   static String id = 'Unhealthy';
@@ -21,206 +25,251 @@ class _UnhealthyState extends State<Unhealthy> {
       home: Scaffold(
         body: Column(
           children: <Widget>[
-            Container(
-              width: 435,
-              height: 431,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: const Color(0xffe1432d),
-              ),
-              child: Column(
-                children: <Widget>[
-                  const SizedBox(
-                    height: 22,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomeScreen()));
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            color: Colors.white,
-                            size: 45,
-                          )),
-                      const Image(image: AssetImage('Images/Ellipse 14.png')),
-                      const SizedBox(
-                        width: 82,
-                      ),
-                      const Text(
-                        'Air Quality',
-                        style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontSize: 22,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
-                      ),
-                      const SizedBox(
-                        width: 72,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          PopupMenuButton(
-                            itemBuilder: (context) => [
-                              const PopupMenuItem(
-                                child: Row(
-                                  children: <Widget>[Icon(Icons.home)],
-                                ),
-                              ),
-                            ],
-                            child: const Icon(
-                              Icons.more_vert,
-                              color: Colors.white,
-                              size: 50,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      SizedBox(
-                        width: 356,
-                      ),
-                      Image(image: AssetImage('Images/Ellipse 14.png')),
-                    ],
-                  ), //have to change what to change and list in that
-                  const SizedBox(
-                    height: 38,
-                  ),
-                  const Text("Unhealthy",
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        color: Colors.white,
-                        fontSize: 60,
-                        fontWeight: FontWeight.w400,
-                      )),
+            StreamBuilder<QuerySnapshot>(
+                stream: db.collection('AQI').snapshots(),
+                builder: (context, snapshot) {
+                  //flutter async snapshot
+                  try {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.lightBlueAccent,
+                        ),
+                      );
+                    }
 
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Row(
-                    children: [
-                      SizedBox(
-                        width: 151,
-                      ),
-                      Image(image: AssetImage('Images/Ellipse 14.png')),
-                    ],
-                  ),
-                  Container(
-                    width: 170,
-                    height: 45,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                      color: Colors.white,
-                      width: 2.7,
-                    )),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'AQI',
-                          style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 23,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white),
+                    if (snapshot.hasData) {
+                      final AQI = snapshot.data?.docs;
+                      List<String> messagesWidgets = [];
+                      List<String> messagesWidgets1 = [];
+
+                      for (final sensor_value in AQI!) {
+                        final aqiValue = sensor_value[('aqi')];
+                        final lpgIndicator = sensor_value[('lpg')];
+                        messagesWidgets.add(aqiValue);
+                        messagesWidgets1.add(lpgIndicator);
+                      }
+                      return Container(
+                        width: 435,
+                        height: 431,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: const Color(0xffe1432d),
                         ),
-                        SizedBox(
-                          width: 40,
+                        child: Column(
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 22,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const HomeScreen()));
+                                    },
+                                    icon: const Icon(
+                                      Icons.arrow_back_ios_new_rounded,
+                                      color: Colors.white,
+                                      size: 45,
+                                    )),
+                                const Image(
+                                    image: AssetImage('Images/Ellipse 14.png')),
+                                const SizedBox(
+                                  width: 82,
+                                ),
+                                const Text(
+                                  'Air Quality',
+                                  style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
+                                ),
+                                const SizedBox(
+                                  width: 72,
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    PopupMenuButton(
+                                      itemBuilder: (context) => [
+                                        const PopupMenuItem(
+                                          child: Row(
+                                            children: <Widget>[
+                                              Icon(Icons.home)
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                      child: const Icon(
+                                        Icons.more_vert,
+                                        color: Colors.white,
+                                        size: 50,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            const SizedBox(height: 15),
+                            const Row(
+                              children: [
+                                SizedBox(
+                                  width: 356,
+                                ),
+                                Image(
+                                    image: AssetImage('Images/Ellipse 14.png')),
+                              ],
+                            ), //have to change what to change and list in that
+                            const SizedBox(
+                              height: 38,
+                            ),
+                            const Text("Unhealthy",
+                                style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white,
+                                  fontSize: 60,
+                                  fontWeight: FontWeight.w400,
+                                )),
+
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            const Row(
+                              children: [
+                                SizedBox(
+                                  width: 151,
+                                ),
+                                Image(
+                                    image: AssetImage('Images/Ellipse 14.png')),
+                              ],
+                            ),
+                            Container(
+                              width: 170,
+                              height: 45,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                color: Colors.white,
+                                width: 2.7,
+                              )),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  const Text(
+                                    'AQI',
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontSize: 23,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white),
+                                  ),
+                                  const SizedBox(
+                                    width: 40,
+                                  ),
+                                  Text(
+                                    messagesWidgets[0],
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontSize: 32,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const Row(
+                              children: [
+                                Image(
+                                    image: AssetImage('Images/Ellipse 14.png')),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 44,
+                            ),
+                            const Image(
+                                image: AssetImage('Images/Ellipse 14.png')),
+                            const Row(
+                              children: [
+                                SizedBox(
+                                  width: 356,
+                                ),
+                                Image(
+                                    image: AssetImage('Images/Ellipse 14.png')),
+                              ],
+                            ),
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text("Hazardous",
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white)),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                Text("Moderate",
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white)),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                Text("Unhealthy",
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white)),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                Text("Very Unhealthy",
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white)),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                Text("Hazardous",
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white)),
+                              ],
+                            ),
+                          ],
                         ),
-                        Text(
-                          '189',
-                          style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 32,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Row(
-                    children: [
-                      Image(image: AssetImage('Images/Ellipse 14.png')),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 44,
-                  ),
-                  const Image(image: AssetImage('Images/Ellipse 14.png')),
-                  const Row(
-                    children: [
-                      SizedBox(
-                        width: 356,
-                      ),
-                      Image(image: AssetImage('Images/Ellipse 14.png')),
-                    ],
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("Hazardous",
-                          style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Text("Moderate",
-                          style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Text("Unhealthy",
-                          style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Text("Very Unhealthy",
-                          style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Text("Hazardous",
-                          style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white)),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+                      );
+                    }
+                  } on Exception catch (e) {
+                    print(e);
+                  }
+                  return const Text(
+                    'Loading',
+                    style: TextStyle(
+                        fontSize: 32,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
+                  );
+                }),
             const SizedBox(
               height: 58,
             ),
@@ -287,10 +336,12 @@ class _UnhealthyState extends State<Unhealthy> {
                   const SizedBox(width: 80),
                   IconButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => gettips()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const gettips()));
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.send,
                       color: Colors.black,
                       size: 40,

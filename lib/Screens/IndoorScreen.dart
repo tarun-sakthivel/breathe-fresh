@@ -1,18 +1,49 @@
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'gettips.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+
+final storage = FirebaseStorage.instance;
+final db = FirebaseFirestore.instance;
 
 class IndoorScreen extends StatefulWidget {
   static String id = 'IndoorScreen';
-  final storage = FirebaseStorage.instance;
-  IndoorScreen({super.key});
+
+  const IndoorScreen({super.key});
 
   @override
   State<IndoorScreen> createState() => _IndoorScreenState();
 }
 
 class _IndoorScreenState extends State<IndoorScreen> {
+  @override
+  void setState(VoidCallback getaqi) {
+    // TODO: implement setState
+    super.setState(getaqi);
+  }
+
+  void getaqi() async {
+    await for (final snapshot in db.collection('AQI').snapshots()) {
+      for (final AQI in snapshot.docs) {
+        print(AQI.data);
+      }
+    }
+  }
+
+  /*void disp(var AQI3) {
+    print(AQI3);
+    Text(
+      AQI3,
+      style: TextStyle(
+        fontFamily: 'Roboto',
+        color: Colors.white,
+        fontSize: 60,
+        fontWeight: FontWeight.w400,
+      ),
+    );
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,83 +52,123 @@ class _IndoorScreenState extends State<IndoorScreen> {
         backgroundColor: Colors.white,
         body: Column(
           children: <Widget>[
-            Container(
-              width: 435,
-              height: 451,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Colors.black54,
-              ),
-              child: Column(
-                children: <Widget>[
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Icon(
-                        Icons.menu_rounded,
-                        color: Colors.white70,
-                        size: 62,
-                      ),
-                    ],
-                  ), //have to change what to change and list in that
-                  const SizedBox(
-                    height: 88,
-                  ),
-                  const Text("379",
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        color: Colors.white,
-                        fontSize: 60,
-                        fontWeight: FontWeight.w400,
-                      )),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Text(
-                    "HARAZDOUS",
+            StreamBuilder<QuerySnapshot>(
+                stream: db.collection('AQI').snapshots(),
+                builder: (context, snapshot) {
+                  //flutter async snapshot
+                  try {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.lightBlueAccent,
+                        ),
+                      );
+                    }
+
+                    if (snapshot.hasData) {
+                      final AQI = snapshot.data?.docs;
+                      List<String> messagesWidgets = [];
+                      List<String> messagesWidgets1 = [];
+
+                      for (final sensor_value in AQI!) {
+                        final aqiValue = sensor_value[('aqi')];
+                        final lpgIndicator = sensor_value[('lpg')];
+                        messagesWidgets.add(aqiValue);
+                        messagesWidgets1.add(lpgIndicator);
+                      }
+                      return Container(
+                        width: 435,
+                        height: 451,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.black54,
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 10,
+                            ),
+
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Icon(
+                                  Icons.menu_rounded,
+                                  color: Colors.white70,
+                                  size: 62,
+                                ),
+                              ],
+                            ), //have to change what to change and list in that
+                            const SizedBox(
+                              height: 88,
+                            ),
+
+                            Text(messagesWidgets[0],
+                                style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white,
+                                  fontSize: 60,
+                                  fontWeight: FontWeight.w400,
+                                )),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            const Text(
+                              "HARAZDOUS",
+                              style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white,
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            SizedBox(
+                              height: 44,
+                              width: 162,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(
+                                          0xffd9d9d9), //this primary function is used to add/change the color of the following elevated button
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(50))),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const gettips()));
+                                  },
+                                  child: const Text(
+                                    'Get Tips',
+                                    style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      color: Colors.black,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  )),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  } on Exception catch (e) {
+                    print(e);
+                  }
+                  return const Text(
+                    'Loading',
                     style: TextStyle(
-                        fontFamily: 'Roboto',
-                        color: Colors.white,
                         fontSize: 32,
+                        color: Colors.black,
                         fontWeight: FontWeight.w400),
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  SizedBox(
-                    height: 44,
-                    width: 162,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(
-                                0xffd9d9d9), //this primary function is used to add/change the color of the following elevated button
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50))),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const gettips()));
-                        },
-                        child: const Text(
-                          'Get Tips',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )),
-                  ),
-                ],
-              ),
-            ),
+                  );
+                }),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -215,10 +286,15 @@ class _IndoorScreenState extends State<IndoorScreen> {
                       const SizedBox(
                         width: 60,
                       ),
-                      const Icon(
-                        Icons.refresh,
-                        color: Colors.black,
-                        size: 40,
+                      IconButton(
+                        onPressed: () {
+                          getaqi();
+                        },
+                        icon: const Icon(
+                          Icons.refresh,
+                          color: Colors.black,
+                          size: 40,
+                        ),
                       ),
                       const SizedBox(width: 80),
                       const Icon(

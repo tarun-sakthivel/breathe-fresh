@@ -32,7 +32,7 @@ class breathe_fresh extends StatelessWidget {
         WelcomeScreen.id: (context) => const WelcomeScreen(),
         GetStarted.id: (context) => const GetStarted(),
         HomeScreen.id: (context) => const HomeScreen(),
-        IndoorScreen.id: (context) => IndoorScreen(),
+        IndoorScreen.id: (context) => const IndoorScreen(),
         OutdoorScreen.id: (context) => const OutdoorScreen(),
         Moderate.id: (context) => const Moderate(),
         Unhealthy.id: (context) => const Unhealthy(),
