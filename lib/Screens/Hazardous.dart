@@ -48,8 +48,8 @@ class _HazrdousState extends State<Hazrdous> {
                 for (final sensor_value in AQI!) {
                   final aqiValue = sensor_value[('aqi')];
                   final lpgIndicator = sensor_value[('lpg')];
-                  messagesWidgets.add(aqiValue);
-                  messagesWidgets1.add(lpgIndicator);
+                  messagesWidgets1.add(aqiValue);
+                  messagesWidgets.add(lpgIndicator);
                 }
                 return Scaffold(
                   body: Column(
@@ -183,7 +183,7 @@ class _HazrdousState extends State<Hazrdous> {
                                     width: 40,
                                   ),
                                   Text(
-                                    messagesWidgets[0],
+                                    messagesWidgets1[0],
                                     style: const TextStyle(
                                         fontFamily: 'Roboto',
                                         fontSize: 32,
