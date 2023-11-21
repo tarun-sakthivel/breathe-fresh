@@ -89,17 +89,25 @@ class _IndoorScreenState extends State<IndoorScreen> {
                               height: 10,
                             ),
 
-                            const Row(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
                                 SizedBox(
                                   width: 20,
                                 ),
-                                Icon(
-                                  Icons.menu_rounded,
-                                  color: Colors.white70,
-                                  size: 62,
-                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  HomeScreen()));
+                                    },
+                                    icon: Icon(
+                                      Icons.arrow_back_ios_new_rounded,
+                                      color: Colors.white,
+                                      size: 45,
+                                    )),
                               ],
                             ), //have to change what to change and list in that
                             const SizedBox(
@@ -107,7 +115,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                             ),
 
                             Text(messagesWidgets[0],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: 'Roboto',
                                   color: Colors.white,
                                   fontSize: 60,

@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'Moderate.dart';
-
 import 'package:flutter/material.dart';
 import 'homeScreen.dart';
 import 'Hazardous.dart';
@@ -19,40 +17,47 @@ class OutdoorScreen extends StatefulWidget {
 }
 
 class _OutdoorScreenState extends State<OutdoorScreen> {
+  int? n;
+
   var AQI = 63;
   final HomeScreen1 obj = HomeScreen1();
+  final Pagerouter obj1 = Pagerouter();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column(
-          children: <Widget>[
-            StreamBuilder<QuerySnapshot>(
-                stream: db.collection('AQI').snapshots(),
-                builder: (context, snapshot) {
-                  //flutter async snapshot
-                  try {
-                    if (!snapshot.hasData) {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                          backgroundColor: Colors.lightBlueAccent,
-                        ),
-                      );
-                    }
+      home: StreamBuilder<QuerySnapshot>(
+          stream: db.collection('AQI').snapshots(),
+          builder: (context, snapshot) {
+            //flutter async snapshot
+            try {
+              if (!snapshot.hasData) {
+                int a = 10;
+                return const Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.lightBlueAccent,
+                  ),
+                );
+              }
 
-                    if (snapshot.hasData) {
-                      final AQI = snapshot.data?.docs;
-                      List<String> messagesWidgets = [];
-                      List<String> messagesWidgets1 = [];
+              if (snapshot.hasData) {
+                final AQI = snapshot.data?.docs;
+                String messagesWidgets2;
+                List<String> messagesWidgets1 = [];
+                List<String> messagesWidgets = [];
+                int? a;
 
-                      for (final sensor_value in AQI!) {
-                        final aqiValue = sensor_value[('aqi')];
-                        final lpgIndicator = sensor_value[('lpg')];
-                        messagesWidgets.add(aqiValue);
-                        messagesWidgets1.add(lpgIndicator);
-                      }
-                      return Container(
+                for (final sensor_value in AQI!) {
+                  final aqiValue = sensor_value[('aqi')];
+                  final lpgIndicator = sensor_value[('lpg')];
+                  messagesWidgets2 = aqiValue;
+                  messagesWidgets1.add(aqiValue);
+                  messagesWidgets.add(lpgIndicator);
+                }
+                return Scaffold(
+                  body: Column(
+                    children: <Widget>[
+                      Container(
                         width: 435,
                         height: 431,
                         decoration: BoxDecoration(
@@ -180,8 +185,8 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                                     width: 40,
                                   ),
                                   Text(
-                                    messagesWidgets[0],
-                                    style: TextStyle(
+                                    messagesWidgets1[0],
+                                    style: const TextStyle(
                                         fontFamily: 'Roboto',
                                         fontSize: 32,
                                         fontWeight: FontWeight.w600,
@@ -259,151 +264,188 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                             ),
                           ],
                         ),
-                      );
-                    }
-                  } on Exception catch (e) {
-                    print(e);
-                  }
-                  return const Text(
-                    'Loading',
-                    style: TextStyle(
-                        fontSize: 32,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400),
-                  );
-                }),
-            const SizedBox(
-              height: 58,
-            ),
-            const Row(children: <Widget>[
-              SizedBox(
-                width: 50,
-              ),
-              Text("report ",
-                  style: TextStyle(
-                      fontFamily: "Roboto",
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black54)),
-            ]),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text("Clean \nBreeze",
-                    style: TextStyle(
-                      fontFamily: "Roboto",
-                      fontSize: 40,
-                      fontWeight: FontWeight.w600,
-                    )),
-                Image.asset('Images/heart5.png')
-              ],
-            ),
-            const SizedBox(
-              height: 123,
-            ),
-            Container(
-              height: 55,
-              width: 330,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: const Color(0xff49da58),
-              ),
-              child: Row(
-                children: <Widget>[
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
-                    },
-                    icon: const Icon(Icons.home),
-                    iconSize: 40,
-                    color: Colors.black,
-                  ),
-                  const SizedBox(
-                    width: 60,
-                  ),
-                  Column(children: [
-                    if (AQI > 0 && AQI <= 45) ...[
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const OutdoorScreen()));
-                        },
-                        icon: const Icon(
-                          Icons.refresh,
-                          color: Colors.black,
-                          size: 40,
-                        ),
                       ),
-                    ] else if (AQI > 45 && AQI < 100) ...[
-                      IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Moderate()));
-                          },
-                          icon: const Icon(
-                            Icons.refresh,
-                            color: Colors.black,
-                            size: 40,
-                          ))
-                    ] else if (AQI >= 100 && AQI <= 189) ...[
-                      IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (Context) => const Unhealthy()));
-                          },
-                          icon: const Icon(
-                            Icons.refresh,
-                            color: Colors.black,
-                            size: 40,
-                          ))
-                    ] else if (AQI >= 190) ...[
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Hazrdous()));
-                        },
-                        icon: const Icon(
-                          Icons.refresh,
-                          color: Colors.black,
-                          size: 40,
+                      const SizedBox(
+                        height: 58,
+                      ),
+                      const Row(children: <Widget>[
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Text("report ",
+                            style: TextStyle(
+                                fontFamily: "Roboto",
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black54)),
+                      ]),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const Text("Clean \nBreeze",
+                              style: TextStyle(
+                                fontFamily: "Roboto",
+                                fontSize: 40,
+                                fontWeight: FontWeight.w600,
+                              )),
+                          Image.asset('Images/heart5.png')
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 123,
+                      ),
+                      Container(
+                        height: 55,
+                        width: 330,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: const Color(0xff49da58),
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            const SizedBox(
+                              width: 30,
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomeScreen()));
+                              },
+                              icon: const Icon(Icons.home),
+                              iconSize: 40,
+                              color: Colors.black,
+                            ),
+                            const SizedBox(
+                              width: 60,
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                a = int.parse(messagesWidgets1[0]);
+                                n = a;
+                                [
+                                  if (n! < 45) ...[
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const OutdoorScreen()))
+                                  ] else if (n! < 100) ...[
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Moderate()))
+                                  ] else if (n! <= 189) ...[
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (Context) =>
+                                                const Unhealthy()))
+                                  ] else if (n! > 189) ...[
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Hazrdous()))
+                                  ]
+                                ];
+                              },
+                              icon: Icon(
+                                Icons.refresh,
+                                color: Colors.black,
+                                size: 40,
+                              ),
+                            ),
+                            const SizedBox(width: 80),
+                            IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const gettips()));
+                              },
+                              icon: const Icon(
+                                Icons.send,
+                                color: Colors.black,
+                                size: 40,
+                              ),
+                            )
+                          ],
                         ),
                       )
-                    ]
-                  ]),
-                  const SizedBox(width: 80),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const gettips()));
-                    },
-                    icon: const Icon(
-                      Icons.send,
-                      color: Colors.black,
-                      size: 40,
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
+                    ],
+                  ),
+                );
+              }
+            } on Exception catch (e) {
+              print(e);
+            }
+            return const Text(
+              'Loading',
+              style: TextStyle(
+                  fontSize: 32,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400),
+            );
+          }),
     );
+  }
+}
+
+class Pagerouter {
+  int AQI = 145;
+  void page_assigner(int AQI, context) {
+    [
+      if (AQI > 0 && AQI <= 45) ...[
+        IconButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const OutdoorScreen()));
+          },
+          icon: const Icon(
+            Icons.refresh,
+            color: Colors.black,
+            size: 40,
+          ),
+        ),
+      ] else if (AQI > 45 && AQI < 100) ...[
+        IconButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Moderate()));
+            },
+            icon: const Icon(
+              Icons.refresh,
+              color: Colors.black,
+              size: 40,
+            ))
+      ] else if (AQI >= 100 && AQI <= 189) ...[
+        IconButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Unhealthy()));
+            },
+            icon: const Icon(
+              Icons.refresh,
+              color: Colors.black,
+              size: 40,
+            ))
+      ] else if (AQI >= 190) ...[
+        IconButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Hazrdous()));
+          },
+          icon: const Icon(
+            Icons.refresh,
+            color: Colors.black,
+            size: 40,
+          ),
+        )
+      ]
+    ];
   }
 }
