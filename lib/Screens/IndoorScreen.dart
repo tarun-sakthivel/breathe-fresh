@@ -3,6 +3,7 @@ import 'homeScreen.dart';
 import 'gettips.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 
 final storage = FirebaseStorage.instance;
 final db = FirebaseFirestore.instance;
@@ -18,11 +19,6 @@ class IndoorScreen extends StatefulWidget {
 
 class _IndoorScreenState extends State<IndoorScreen> {
   @override
-  void setState(VoidCallback getaqi) {
-    // TODO: implement setState
-    super.setState(getaqi);
-  }
-
   void getaqi() async {
     await for (final snapshot in db.collection('AQI').snapshots()) {
       for (final AQI in snapshot.docs) {
@@ -31,6 +27,14 @@ class _IndoorScreenState extends State<IndoorScreen> {
     }
   }
 
+  triggerNotification() {
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: 10,
+            channelKey: 'lpg_gas_alert',
+            title: 'Alert!!',
+            body: 'lpg gas is leaked'));
+  }
   /*void disp(var AQI3) {
     print(AQI3);
     Text(
@@ -75,6 +79,9 @@ class _IndoorScreenState extends State<IndoorScreen> {
                         final lpgIndicator = sensor_value[('lpg')];
                         messagesWidgets.add(aqiValue);
                         messagesWidgets1.add(lpgIndicator);
+                        if (messagesWidgets1[0] == 'gas is detected') {
+                          triggerNotification();
+                        }
                       }
                       return Container(
                         width: 435,
@@ -92,7 +99,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
-                                SizedBox(
+                                const SizedBox(
                                   width: 20,
                                 ),
                                 IconButton(
@@ -101,9 +108,9 @@ class _IndoorScreenState extends State<IndoorScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  HomeScreen()));
+                                                  const HomeScreen()));
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.arrow_back_ios_new_rounded,
                                       color: Colors.white,
                                       size: 45,
@@ -296,7 +303,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                       ),
                       IconButton(
                         onPressed: () {
-                          getaqi();
+                          IndoorScreen();
                         },
                         icon: const Icon(
                           Icons.refresh,
@@ -305,10 +312,18 @@ class _IndoorScreenState extends State<IndoorScreen> {
                         ),
                       ),
                       const SizedBox(width: 80),
-                      const Icon(
-                        Icons.send,
-                        color: Colors.black,
-                        size: 40,
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const gettips()));
+                        },
+                        icon: Icon(
+                          Icons.send,
+                          color: Colors.black,
+                          size: 40,
+                        ),
                       )
                     ],
                   ),

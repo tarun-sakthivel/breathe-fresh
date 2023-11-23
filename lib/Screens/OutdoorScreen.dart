@@ -353,7 +353,7 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                                   ]
                                 ];
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.refresh,
                                 color: Colors.black,
                                 size: 40,

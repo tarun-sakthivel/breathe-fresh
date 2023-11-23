@@ -11,8 +11,18 @@ import 'Screens/Hazardous.dart';
 import 'Screens/registrationsc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart'; //this package is used to keep the app in potrait mode
+import 'package:awesome_notifications/awesome_notifications.dart';
 
 void main() async {
+  AwesomeNotifications().initialize(
+      null,
+      [
+        NotificationChannel(
+            channelKey: 'lpg_gas_alert',
+            channelName: 'Breathe Fresh',
+            channelDescription: 'Notification for the leak of lpg gas')
+      ],
+      debug: true);
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(

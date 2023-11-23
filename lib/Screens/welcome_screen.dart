@@ -1,6 +1,7 @@
 import 'package:breathe_fresh/Screens/getStarted.dart';
 import 'package:flutter/material.dart';
 import 'package:breathe_fresh/Components/RoundedButton.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcome_screen';
@@ -11,6 +12,16 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
+  void initState() {
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        AwesomeNotifications().requestPermissionToSendNotifications();
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

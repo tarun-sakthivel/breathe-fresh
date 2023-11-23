@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'OutdoorScreen.dart';
 import 'Moderate.dart';
 import 'Unhealthy.dart';
-import 'IndoorScreen.dart';
 
 final db = FirebaseFirestore.instance;
 
