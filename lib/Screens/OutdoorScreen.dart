@@ -5,6 +5,7 @@ import 'homeScreen.dart';
 import 'Hazardous.dart';
 import 'Unhealthy.dart';
 import 'gettips.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 
 final db = FirebaseFirestore.instance;
 
@@ -22,6 +23,16 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
   var AQI = 63;
   final HomeScreen1 obj = HomeScreen1();
   final Pagerouter obj1 = Pagerouter();
+  @override
+  triggerNotification() {
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: 10,
+            channelKey: 'lpg_gas_alert',
+            title: 'Alert!!',
+            body: 'lpg gas is leaked'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,6 +64,9 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                   messagesWidgets2 = aqiValue;
                   messagesWidgets1.add(aqiValue);
                   messagesWidgets.add(lpgIndicator);
+                }
+                if (messagesWidgets1[0] == 'gas is detected') {
+                  triggerNotification();
                 }
                 return Scaffold(
                   body: Column(
@@ -326,25 +340,25 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                                 a = int.parse(messagesWidgets1[0]);
                                 n = a;
                                 [
-                                  if (n! < 45) ...[
+                                  if (n! < 50) ...[
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 const OutdoorScreen()))
-                                  ] else if (n! < 100) ...[
+                                  ] else if (n! < 150) ...[
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 const Moderate()))
-                                  ] else if (n! <= 189) ...[
+                                  ] else if (n! <= 200) ...[
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (Context) =>
                                                 const Unhealthy()))
-                                  ] else if (n! > 189) ...[
+                                  ] else if (n! > 299) ...[
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

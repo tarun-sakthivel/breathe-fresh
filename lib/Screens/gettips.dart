@@ -5,7 +5,7 @@ import 'homeScreen.dart';
 
 class gettips extends StatefulWidget {
   static String id = "gettips";
-  static String state1 = "Good";
+  static String state1 = 'good';
   static String gas =
       "Particulate Matter(PM), \nNitrogen Dioxide (NO2),\nSulfur Dioxide (SO2),\n Ozone (O3),\n Carbon Monoxide (CO).";
   static String mask =

@@ -324,25 +324,25 @@ class _UnhealthyState extends State<Unhealthy> {
                                 a = int.parse(messagesWidgets1[0]);
                                 n = a;
                                 [
-                                  if (n! < 45) ...[
+                                  if (n! < 50) ...[
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 const OutdoorScreen()))
-                                  ] else if (n! < 100) ...[
+                                  ] else if (n! < 150) ...[
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 const Moderate()))
-                                  ] else if (n! <= 189) ...[
+                                  ] else if (n! <= 200) ...[
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (Context) =>
                                                 const Unhealthy()))
-                                  ] else if (n! > 189) ...[
+                                  ] else if (n! > 299) ...[
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

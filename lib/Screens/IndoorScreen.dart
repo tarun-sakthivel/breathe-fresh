@@ -83,6 +83,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                           triggerNotification();
                         }
                       }
+
                       return Container(
                         width: 435,
                         height: 451,
