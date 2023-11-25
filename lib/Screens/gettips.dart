@@ -188,7 +188,7 @@ class _gettipsState extends State<gettips> {
                           size: 40,
                         ),
                       ),
-                      const SizedBox(width: 80),
+                      const SizedBox(width: 79),
                       const Icon(
                         Icons.send,
                         color: Colors.black,
