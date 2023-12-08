@@ -1,6 +1,7 @@
 import 'package:breathe_fresh/Screens/OutdoorScreen.dart';
 import 'package:breathe_fresh/Screens/getStarted.dart';
 import 'package:breathe_fresh/Screens/gettips.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'Screens/welcome_screen.dart';
 import 'Screens/homeScreen.dart';
@@ -14,6 +15,24 @@ import 'package:flutter/services.dart'; //this package is used to keep the app i
 import 'package:awesome_notifications/awesome_notifications.dart';
 
 void main() async {
+  void getaqi() async {
+    await for (final snapshot
+        in FirebaseFirestore.instance.collection('AQI').snapshots()) {
+      for (final AQI in snapshot.docs) {
+        print(AQI.data);
+      }
+    }
+  }
+
+  triggerNotification() {
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: 10,
+            channelKey: 'lpg_gas_alert',
+            title: 'Alert!!',
+            body: 'lpg gas is leaked'));
+  }
+
   AwesomeNotifications().initialize(
       null,
       [

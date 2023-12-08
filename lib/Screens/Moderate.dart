@@ -50,19 +50,16 @@ class _ModerateState extends State<Moderate> {
 
               if (snapshot.hasData) {
                 final AQI = snapshot.data?.docs;
-                List<String> messagesWidgets = [];
+
                 List<String> messagesWidgets1 = [];
                 int? a;
 
                 for (final sensor_value in AQI!) {
                   final aqiValue = sensor_value[('aqi')];
-                  final lpgIndicator = sensor_value[('lpg')];
+
                   messagesWidgets1.add(aqiValue);
-                  messagesWidgets.add(lpgIndicator);
                 }
-                if (messagesWidgets1[0] == 'gas is detected') {
-                  triggerNotification();
-                }
+
                 return Scaffold(
                   body: Column(
                     children: <Widget>[

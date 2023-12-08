@@ -7,7 +7,7 @@ class gettips extends StatefulWidget {
   static String id = "gettips";
   static String state1 = 'good';
   static String gas =
-      "Particulate Matter(PM), \nNitrogen Dioxide (NO2),\nSulfur Dioxide (SO2),\n Ozone (O3),\n Carbon Monoxide (CO).";
+      " \nNitrogen Dioxide (NO2),\nSulfur Dioxide (SO2),\n Ozone (O3),\n Carbon Monoxide (CO).";
   static String mask =
       "Surgical Masks, N95 \n Respirators, KN95 Masks,\n Reusable Cloth Masks, \nP100 Respirators.";
   static String precausion =

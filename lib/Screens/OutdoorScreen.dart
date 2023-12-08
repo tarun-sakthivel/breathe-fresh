@@ -55,19 +55,16 @@ class _OutdoorScreenState extends State<OutdoorScreen> {
                 final AQI = snapshot.data?.docs;
                 String messagesWidgets2;
                 List<String> messagesWidgets1 = [];
-                List<String> messagesWidgets = [];
+
                 int? a;
 
                 for (final sensor_value in AQI!) {
                   final aqiValue = sensor_value[('aqi')];
-                  final lpgIndicator = sensor_value[('lpg')];
+
                   messagesWidgets2 = aqiValue;
                   messagesWidgets1.add(aqiValue);
-                  messagesWidgets.add(lpgIndicator);
                 }
-                if (messagesWidgets1[0] == 'gas is detected') {
-                  triggerNotification();
-                }
+
                 return Scaffold(
                   body: Column(
                     children: <Widget>[

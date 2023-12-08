@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'homeScreen.dart';
 import 'gettips.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,15 +19,6 @@ class IndoorScreen extends StatefulWidget {
 }
 
 class _IndoorScreenState extends State<IndoorScreen> {
-  @override
-  void getaqi() async {
-    await for (final snapshot in db.collection('AQI').snapshots()) {
-      for (final AQI in snapshot.docs) {
-        print(AQI.data);
-      }
-    }
-  }
-
   triggerNotification() {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
@@ -57,6 +49,40 @@ class _IndoorScreenState extends State<IndoorScreen> {
         body: Column(
           children: <Widget>[
             StreamBuilder<QuerySnapshot>(
+                stream: db.collection('MQ2').snapshots(),
+                builder: (context, snapshot) {
+                  try {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.lightBlueAccent,
+                        ),
+                      );
+                    }
+
+                    if (snapshot.hasData) {
+                      final MQ2 = snapshot.data?.docs;
+                      List<String> messagesWidgets = [];
+
+                      for (final sensor_value in MQ2!) {
+                        final lpgIndicator = sensor_value[('lpg')];
+
+                        messagesWidgets.add(lpgIndicator);
+                        if (messagesWidgets[0] == '1') {
+                          triggerNotification();
+                        }
+                      }
+                      return Container(
+                        height: 0,
+                        width: 0,
+                      );
+                    }
+                  } catch (e) {
+                    print(e);
+                  }
+                  return Text('Loading..');
+                }),
+            StreamBuilder<QuerySnapshot>(
                 stream: db.collection('AQI').snapshots(),
                 builder: (context, snapshot) {
                   //flutter async snapshot
@@ -71,17 +97,12 @@ class _IndoorScreenState extends State<IndoorScreen> {
 
                     if (snapshot.hasData) {
                       final AQI = snapshot.data?.docs;
-                      List<String> messagesWidgets = [];
                       List<String> messagesWidgets1 = [];
 
                       for (final sensor_value in AQI!) {
                         final aqiValue = sensor_value[('aqi')];
-                        final lpgIndicator = sensor_value[('lpg')];
-                        messagesWidgets.add(aqiValue);
-                        messagesWidgets1.add(lpgIndicator);
-                        if (messagesWidgets1[0] == 'gas is detected') {
-                          triggerNotification();
-                        }
+
+                        messagesWidgets1.add(aqiValue);
                       }
 
                       return Container(
@@ -122,7 +143,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                               height: 88,
                             ),
 
-                            Text(messagesWidgets[0],
+                            Text(messagesWidgets1[0],
                                 style: const TextStyle(
                                   fontFamily: 'Roboto',
                                   color: Colors.white,
@@ -133,7 +154,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                               height: 15,
                             ),
                             const Text(
-                              "HARAZDOUS",
+                              "Moderate",
                               style: TextStyle(
                                   fontFamily: 'Roboto',
                                   color: Colors.white,
@@ -304,7 +325,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                       ),
                       IconButton(
                         onPressed: () {
-                          IndoorScreen();
+                          const IndoorScreen();
                         },
                         icon: const Icon(
                           Icons.refresh,
@@ -320,7 +341,7 @@ class _IndoorScreenState extends State<IndoorScreen> {
                               MaterialPageRoute(
                                   builder: (context) => const gettips()));
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.send,
                           color: Colors.black,
                           size: 40,

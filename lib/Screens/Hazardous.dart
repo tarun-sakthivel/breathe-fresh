@@ -51,17 +51,16 @@ class _HazrdousState extends State<Hazrdous> {
 
               if (snapshot.hasData) {
                 final AQI = snapshot.data?.docs;
-                List<String> messagesWidgets = [];
+
                 List<String> messagesWidgets1 = [];
                 int? a;
 
                 for (final sensor_value in AQI!) {
                   final aqiValue = sensor_value[('aqi')];
-                  final lpgIndicator = sensor_value[('lpg')];
+
                   messagesWidgets1.add(aqiValue);
-                  messagesWidgets.add(lpgIndicator);
                 }
-                if (messagesWidgets1[0] == 'gas is detected') {}
+
                 return Scaffold(
                   body: Column(
                     children: <Widget>[
