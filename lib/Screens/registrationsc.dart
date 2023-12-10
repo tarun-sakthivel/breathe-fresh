@@ -18,6 +18,7 @@ class _RegistrationscState extends State<Registrationsc> {
   late String email;
   late String password;
   late String Username;
+  bool _obscureText = true;
   final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
 
@@ -160,11 +161,24 @@ class _RegistrationscState extends State<Registrationsc> {
                               margin: const EdgeInsets.symmetric(
                                   vertical: 10.0, horizontal: 16.0),
                               child: TextField(
-                                obscureText: true,
+                                obscureText: _obscureText,
                                 onChanged: (value) {
                                   password = value;
                                 },
                                 decoration: ktextFieldDecoration.copyWith(
+                                    suffixIcon: IconButton(
+                                      //Icon button to add the visibility icon to the password textfield
+                                      icon: Icon(
+                                        _obscureText
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _obscureText = !_obscureText;
+                                        });
+                                      },
+                                    ),
                                     hintStyle: const TextStyle(
                                       fontSize: 23,
                                       fontFamily: 'Roboto',

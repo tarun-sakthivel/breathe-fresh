@@ -18,6 +18,7 @@ class _GetStartedState extends State<GetStarted> {
   late String email;
   late String password;
   late String Username;
+  bool _obscureText = true;
   bool showSpinner = false;
 
   final _auth = FirebaseAuth.instance;
@@ -167,11 +168,24 @@ class _GetStartedState extends State<GetStarted> {
                                       horizontal: 16.0,
                                     ),
                                     child: TextField(
-                                      obscureText: true,
+                                      obscureText: _obscureText,
                                       onChanged: (value) {
                                         password = value;
                                       },
                                       decoration: ktextFieldDecoration.copyWith(
+                                        suffixIcon: IconButton(
+                                          //Icon button to add the visibility icon to the password textfield
+                                          icon: Icon(
+                                            _obscureText
+                                                ? Icons.visibility_off
+                                                : Icons.visibility,
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              _obscureText = !_obscureText;
+                                            });
+                                          },
+                                        ),
                                         hintStyle: const TextStyle(
                                           fontSize: 23,
                                           fontFamily: 'Roboto',
