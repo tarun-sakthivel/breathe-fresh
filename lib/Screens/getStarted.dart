@@ -53,7 +53,7 @@ class _GetStartedState extends State<GetStarted> {
                           height: 150.0,
                         ),
                         const Text(
-                          'Login To Your\nAccount',
+                          'Sigin To Your\nAccount',
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w700,
